@@ -13,9 +13,17 @@ import SpriteKit
     typealias SKColor = UIColor
 #endif
 
+#if os(OSX)
+    typealias UITouch = NSEvent
+#endif
+
 class GameScene: SKScene {
     
-    static let defaultSize = CGSize(width: 667, height: 375)
+    static var currentTime: TimeInterval = 0
+    
+    static let defaultTransition = SKTransition.crossFade(withDuration: 0.25)
+    
+    static let defaultSize = CGSize(width: 568, height: 320)
     
     static var viewBoundsSize = CGSize.zero
     static var sketchSize = CGSize.zero
@@ -44,23 +52,17 @@ class GameScene: SKScene {
         let yScale = viewBoundsSize.height / sketchSize.height
         let scale = min(xScale, yScale)
         
-        currentSize.width = viewBoundsSize.width / scale
-        currentSize.height = viewBoundsSize.height / scale
+        self.currentSize.width = self.viewBoundsSize.width / scale
+        self.currentSize.height = self.viewBoundsSize.height / scale
         
-        translate.dx = (currentSize.width - sketchSize.width)/2
-        translate.dy = (currentSize.height - sketchSize.height)/2
-        
-        print("currentSize")
-        print(currentSize)
-        
-        print("translate")
-        print(translate)
+        self.translate.dx = (self.currentSize.width - self.sketchSize.width)/2
+        self.translate.dy = (self.currentSize.height - self.sketchSize.height)/2
         
         Control.resetPosition()
     }
     
     func load() {
-        self.scaleMode = SKSceneScaleMode.aspectFit
+        scaleMode = SKSceneScaleMode.aspectFit
     }
     
     #if os(watchOS)
@@ -74,38 +76,37 @@ class GameScene: SKScene {
     #endif
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        GameScene.currentTime = currentTime
     }
     
-    func touchDown(atPoint pos : CGPoint) {
-        self.convert(pos, to: self)
+    func touchDown(touch: UITouch) {
         
     }
     
-    func touchMoved(toPoint pos : CGPoint) {
+    func touchMoved(touch: UITouch) {
         
     }
     
-    func touchUp(atPoint pos : CGPoint) {
+    func touchUp(touch: UITouch) {
         
     }
     
     #if os(iOS) || os(tvOS)
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        for t in touches { touchDown(touch: t) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        for t in touches { touchMoved(touch: t) }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        for t in touches { touchUp(touch: t) }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        for t in touches { touchUp(touch: t) }
     }
     
     #endif
@@ -113,15 +114,15 @@ class GameScene: SKScene {
     #if os(OSX)
     
     override func mouseDown(with event: NSEvent) {
-        self.touchDown(atPoint: event.location(in: self))
+        touchDown(touch: event)
     }
     
     override func mouseDragged(with event: NSEvent) {
-        self.touchMoved(toPoint: event.location(in: self))
+        touchMoved(touch: event)
     }
     
     override func mouseUp(with event: NSEvent) {
-        self.touchUp(atPoint: event.location(in: self))
+        touchUp(touch: event)
     }
     
     override func keyDown(with event: NSEvent) {

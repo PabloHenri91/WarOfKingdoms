@@ -10,18 +10,18 @@ import SpriteKit
 
 class LoadScene: GameScene {
     
-    enum state: String {
+    enum states: String {
         case load
         case mainMenu
     }
     
-    var state: state = .load
-    var nextState: state = .load
+    var state: states = .load
+    var nextState: states = .load
     
     override func load() {
         super.load()
         
-        self.addBackground()
+        self.addChild(Label(text: "LoadScene", x: 100, y: 100))
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -29,7 +29,7 @@ class LoadScene: GameScene {
         
         if self.state == self.nextState {
             
-            switch self.state {
+            switch state {
                 
             case .load:
                 self.nextState = .mainMenu
@@ -47,13 +47,10 @@ class LoadScene: GameScene {
                 break
                 
             case .mainMenu:
-                self.view?.presentScene(MainMenu(), transition: SKTransition.crossFade(withDuration: 0.25))
+                self.view?.presentScene(MainMenuScene(), transition: GameScene.defaultTransition)
                 break
             }
         }
     }
     
-    func addBackground() {
-        
-    }
 }

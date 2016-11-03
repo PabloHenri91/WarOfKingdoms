@@ -10,6 +10,13 @@ import SpriteKit
 
 class Label: Control {
     
+    enum fontSize: CGFloat {
+        case fontSize8 = 8
+        case fontSize16 = 16
+        case fontSize24 = 24
+        case fontSize32 = 32
+    }
+    
     var text: String {
         get {
             return self.labelNode.text ?? ""
@@ -18,21 +25,22 @@ class Label: Control {
             self.labelNode.text = newValue.translation()
         }
     }
-    var labelNode: SKLabelNode
+    
+    private var labelNode: SKLabelNode
     
     init(horizontalAlignmentMode: SKLabelHorizontalAlignmentMode = .center,
          verticalAlignmentMode: SKLabelVerticalAlignmentMode = .center,
          fontName: String? = nil,
-         text: String = "",
-         fontSize: CGFloat = 16,
+         text: String,
+         fontSize: fontSize = .fontSize16,
          fontColor: SKColor = SKColor.black,
          x: CGFloat, y: CGFloat,
-         horizontalAlignment: horizontalAlignment = .left,
-         verticalAlignment: verticalAlignment = .top) {
+         horizontalAlignment: horizontalAlignments = .left,
+         verticalAlignment: verticalAlignments = .top) {
         
         self.labelNode = SKLabelNode(text: fontName)
         
-        self.labelNode.fontSize = 16
+        self.labelNode.fontSize = fontSize.rawValue
         self.labelNode.fontColor = fontColor
         self.labelNode.horizontalAlignmentMode = horizontalAlignmentMode
         self.labelNode.verticalAlignmentMode = verticalAlignmentMode
@@ -40,6 +48,8 @@ class Label: Control {
         self.labelNode.text = text
         
         super.init()
+        
+        self.addChild(self.labelNode)
         
         self.anchorPoint = CGPoint(x: 0, y: 1)
         self.sketchPosition = CGPoint(x: x, y: y)

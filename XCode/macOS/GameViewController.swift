@@ -31,6 +31,7 @@ class GameViewController: NSViewController, NSWindowDelegate {
     
     override func viewDidAppear() {
         super.viewDidAppear()
+        self.view.window?.delegate = self
     }
     
     func windowDidResize(_ notification: Notification) {
