@@ -57,8 +57,8 @@ class MapManager: SKNode {
     }
     
     func updatePlayerRegion(position: CGPoint) {
-        self.playerRegion.x = (position.x / Chunk.size).rounded()
-        self.playerRegion.y = (position.y / Chunk.size).rounded()
+        self.playerRegion.x = (position.x / Chunk.size.width).rounded()
+        self.playerRegion.y = (position.y / Chunk.size.height).rounded()
     }
     
     func loadMap() {

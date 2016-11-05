@@ -53,6 +53,6 @@ class MissionScene: GameScene {
     }
     
     override func touchMoved(touch: UITouch) {
-        self.gameCamera.node.position = self.gameCamera.node.position + CGPoint(x: touch.deltaX, y: touch.deltaY)
+        self.gameCamera.node.position = self.gameCamera.node.position + CGPoint(x: -touch.deltaX, y: touch.deltaY)
     }
 }

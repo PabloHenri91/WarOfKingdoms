@@ -72,9 +72,9 @@ extension String {
     
     func translation() -> String {
         let translated = NSLocalizedString(self, comment: self)
-//        if translated == self {
-//            print(self)
-//        }
+        if translated == self {
+            //print(self)
+        }
         return translated
     }
 }
