@@ -39,6 +39,7 @@ class Tileset {
                 size: CGSize(width: tilewidth/size.width, height: tileheight/size.height))
             
             let tileTexture = SKTexture(rect: rect, in: texture)
+            tileTexture.filteringMode = GameScene.defaultFilteringMode
             
             self.tileTextures.append(tileTexture)
             

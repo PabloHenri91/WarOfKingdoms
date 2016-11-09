@@ -19,9 +19,12 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    static var currentGameScene = GameScene()
+    
     static var currentTime: TimeInterval = 0
     
     static let defaultTransition = SKTransition.crossFade(withDuration: 0.25)
+    static let defaultFilteringMode: SKTextureFilteringMode = .nearest
     
     static let defaultSize = CGSize(width: 568, height: 320)
     
@@ -40,6 +43,8 @@ class GameScene: SKScene {
         super.init(size: GameScene.currentSize)
         self.anchorPoint = CGPoint(x: 0, y: 1)
         self.backgroundColor = GameColors.background
+        
+        GameScene.currentGameScene = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -134,4 +139,18 @@ class GameScene: SKScene {
     }
     
     #endif
+}
+
+extension UITouch {
+    var delta: CGPoint {
+        get {
+            #if os(iOS)
+                return self.previousLocation(in: GameScene.currentGameScene) - self.location(in: GameScene.currentGameScene)
+                #endif
+            
+            #if os(OSX)
+                return CGPoint(x: -self.deltaX, y: self.deltaY)
+            #endif
+        }
+    }
 }

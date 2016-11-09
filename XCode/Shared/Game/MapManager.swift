@@ -30,10 +30,9 @@ class MapManager: SKNode {
             for x in Int(self.playerRegion.x - 1)...Int(self.playerRegion.x + 1) {
                 let chunk = Chunk(x: x, y: -y)
                 self.chunks.append(chunk)
+                self.addChild(chunk)
             }
         }
-        
-        addChunks()
         
         self.loadedRegion = self.playerRegion
     }

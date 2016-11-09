@@ -19,22 +19,14 @@ class MainMenuScene: GameScene {
     var nextState: states = .mainMenu
     
     
-    var buttonPlay: Button
-    
-    override init(size: CGSize = defaultSize) {
-        
-        self.buttonPlay = Button(imageNamed: "buttonYellow144x34", x: 200, y: 200)
-        self.buttonPlay.addChild(Label(text: "Play", x: buttonPlay.size.width/2, y: buttonPlay.size.height/2))
-        
-        super.init(size: size)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var buttonPlay: Button!
     
     override func load() {
         super.load()
+        
+        self.buttonPlay = Button(imageNamed: "buttonYellow144x34", x: 212, y: 143, horizontalAlignment: .center, verticalAlignment: .center)
+        self.buttonPlay.addChild(Label(text: "Play", x: buttonPlay.size.width/2, y: buttonPlay.size.height/2))
+        
         
         self.addChild(Label(text: "MainMenuScene", x: 100, y: 100))
         

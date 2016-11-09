@@ -10,49 +10,67 @@ import SpriteKit
 
 class MissionScene: GameScene {
 
-    var gameWorld: GameWorld
-    var gameCamera: GameCamera
+    var gameWorld: GameWorld!
+    var gameCamera: GameCamera!
     
-    var mapManager: MapManager
+    var mapManager: MapManager!
     
-    override init(size: CGSize = defaultSize) {
+    var player: Player!
+    
+    override func load() {
+        super.load()
         
         self.gameWorld = GameWorld()
         self.gameCamera = GameCamera()
         
         self.mapManager = MapManager()
         
-        super.init(size: size)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func load() {
-        super.load()
+        self.player = Player()
+        
         
         self.addChild(self.gameWorld)
         self.gameWorld.addChild(self.gameCamera)
         self.gameWorld.addChild(self.gameCamera.node)
         self.gameCamera.update()
         
-        self.mapManager.reloadMap(position: CGPoint.zero)
+        self.mapManager.reloadMap(position: self.player.position)
         self.gameWorld.addChild(self.mapManager)
+        
+        self.gameWorld.addChild(self.player)
+        self.addChild(self.player.hud)
     }
     
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
-        self.mapManager.update(position: gameCamera.node.position)
+        
+        self.mapManager.update(position: self.player.position)
     }
     
     override func didFinishUpdate() {
         super.didFinishUpdate()
         
+        self.gameCamera.node.position = self.player.position
         self.gameCamera.update()
     }
     
     override func touchMoved(touch: UITouch) {
-        self.gameCamera.node.position = self.gameCamera.node.position + CGPoint(x: -touch.deltaX, y: touch.deltaY)
+        super.touchMoved(touch: touch)
+        
+        self.player.position = self.player.position + touch.delta
     }
+    
+    #if os(OSX)
+    override func keyDown(with event: NSEvent) {
+        switch event.keyCode {
+            
+        case 12: // q
+            self.player.getXP(xp: Int.random(100))
+            break
+            
+        default:
+            print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
+            break
+        }
+    }
+    #endif
 }

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		841CC8B51DCFA04100D879FD /* kenpixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 841CC8B41DCFA04100D879FD /* kenpixel.ttf */; };
+		841CC8B61DCFA04100D879FD /* kenpixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 841CC8B41DCFA04100D879FD /* kenpixel.ttf */; };
+		84240ADD1DCEBD4A00858870 /* GameMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84240ADC1DCEBD4A00858870 /* GameMath.swift */; };
+		84240ADE1DCEBD4A00858870 /* GameMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84240ADC1DCEBD4A00858870 /* GameMath.swift */; };
+		844E07631DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */; };
+		844E07641DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */; };
 		845514D61DCA3A4100B3C3CF /* MissionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845514D51DCA3A4100B3C3CF /* MissionScene.swift */; };
 		845514D91DCA3A4100B3C3CF /* MissionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845514D51DCA3A4100B3C3CF /* MissionScene.swift */; };
 		847F66FE1DCA6B0100E8389D /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F66FD1DCA6B0100E8389D /* MapManager.swift */; };
@@ -19,6 +25,8 @@
 		847FEA6C1DCE959600C72D34 /* fireCave.png in Resources */ = {isa = PBXBuildFile; fileRef = 847FEA6A1DCE94BB00C72D34 /* fireCave.png */; };
 		847FEA771DCEA56300C72D34 /* 0.0.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 847FEA761DCEA56300C72D34 /* 0.0.tmx */; };
 		847FEA781DCEA56300C72D34 /* 0.0.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 847FEA761DCEA56300C72D34 /* 0.0.tmx */; };
+		847FEA7A1DCEAA3400C72D34 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FEA791DCEAA3400C72D34 /* Player.swift */; };
+		847FEA7B1DCEAA3400C72D34 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FEA791DCEAA3400C72D34 /* Player.swift */; };
 		848DF32E1DC38CEA00D9BC7A /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DF32D1DC38CEA00D9BC7A /* Control.swift */; };
 		848DF3311DC38CEA00D9BC7A /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DF32D1DC38CEA00D9BC7A /* Control.swift */; };
 		848DF3331DC38CF400D9BC7A /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848DF3321DC38CF400D9BC7A /* GameScene.swift */; };
@@ -127,12 +135,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		841CC8B41DCFA04100D879FD /* kenpixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kenpixel.ttf; sourceTree = "<group>"; };
+		84240ADC1DCEBD4A00858870 /* GameMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMath.swift; sourceTree = "<group>"; };
+		844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerHUD.swift; sourceTree = "<group>"; };
 		845514D51DCA3A4100B3C3CF /* MissionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionScene.swift; sourceTree = "<group>"; };
 		847F66FD1DCA6B0100E8389D /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		847F67011DCA6B4C00E8389D /* Chunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
 		847F67041DCA6B6F00E8389D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		847FEA6A1DCE94BB00C72D34 /* fireCave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fireCave.png; sourceTree = "<group>"; };
 		847FEA761DCEA56300C72D34 /* 0.0.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = 0.0.tmx; sourceTree = "<group>"; };
+		847FEA791DCEAA3400C72D34 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		848DF32D1DC38CEA00D9BC7A /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
 		848DF3321DC38CF400D9BC7A /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		848DF3381DC38D1000D9BC7A /* LoadScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadScene.swift; sourceTree = "<group>"; };
@@ -238,12 +250,23 @@
 			path = world0;
 			sourceTree = "<group>";
 		};
+		8413E5691DCF93B9000F631A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				841CC8B41DCFA04100D879FD /* kenpixel.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		847F66FC1DCA6AC300E8389D /* Game */ = {
 			isa = PBXGroup;
 			children = (
 				847F67011DCA6B4C00E8389D /* Chunk.swift */,
+				84240ADC1DCEBD4A00858870 /* GameMath.swift */,
 				84B413ED1DCABA3500D125E9 /* GameWorld.swift */,
 				847F66FD1DCA6B0100E8389D /* MapManager.swift */,
+				847FEA791DCEAA3400C72D34 /* Player.swift */,
+				844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */,
 				847F67041DCA6B6F00E8389D /* Tile.swift */,
 				848F0BC81DCE210300F9D547 /* Tileset.swift */,
 			);
@@ -299,6 +322,7 @@
 		84AC31951DC3864D00F0C6E1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8413E5691DCF93B9000F631A /* Fonts */,
 				840E16D11DCC9C6300CD2298 /* Tiled */,
 				847F66FC1DCA6AC300E8389D /* Game */,
 				848DF3371DC38CFB00D9BC7A /* Scenes */,
@@ -322,11 +346,11 @@
 		84AC31A01DC3864D00F0C6E1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				84AC31AB1DC3864D00F0C6E1 /* Info.plist */,
 				84AC31A11DC3864D00F0C6E1 /* AppDelegate.swift */,
 				84AC31A31DC3864D00F0C6E1 /* GameViewController.swift */,
-				84AC31A51DC3864D00F0C6E1 /* Main.storyboard */,
 				84AC31A81DC3864D00F0C6E1 /* LaunchScreen.storyboard */,
-				84AC31AB1DC3864D00F0C6E1 /* Info.plist */,
+				84AC31A51DC3864D00F0C6E1 /* Main.storyboard */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -334,8 +358,8 @@
 		84AC31B21DC3864D00F0C6E1 /* watchOS App */ = {
 			isa = PBXGroup;
 			children = (
-				84AC31B31DC3864D00F0C6E1 /* Interface.storyboard */,
 				84AC31B61DC3864D00F0C6E1 /* Info.plist */,
+				84AC31B31DC3864D00F0C6E1 /* Interface.storyboard */,
 			);
 			path = "watchOS App";
 			sourceTree = "<group>";
@@ -343,9 +367,9 @@
 		84AC31BF1DC3864D00F0C6E1 /* watchOS Extension */ = {
 			isa = PBXGroup;
 			children = (
-				84AC31C01DC3864D00F0C6E1 /* InterfaceController.swift */,
-				84AC31C21DC3864D00F0C6E1 /* ExtensionDelegate.swift */,
 				84AC31C41DC3864D00F0C6E1 /* Info.plist */,
+				84AC31C21DC3864D00F0C6E1 /* ExtensionDelegate.swift */,
+				84AC31C01DC3864D00F0C6E1 /* InterfaceController.swift */,
 			);
 			path = "watchOS Extension";
 			sourceTree = "<group>";
@@ -353,10 +377,10 @@
 		84AC31CA1DC3864D00F0C6E1 /* tvOS */ = {
 			isa = PBXGroup;
 			children = (
+				84AC31D21DC3864D00F0C6E1 /* Info.plist */,
 				84AC31CB1DC3864D00F0C6E1 /* AppDelegate.swift */,
 				84AC31CD1DC3864D00F0C6E1 /* GameViewController.swift */,
 				84AC31CF1DC3864D00F0C6E1 /* Main.storyboard */,
-				84AC31D21DC3864D00F0C6E1 /* Info.plist */,
 			);
 			path = tvOS;
 			sourceTree = "<group>";
@@ -364,10 +388,10 @@
 		84AC31D81DC3864D00F0C6E1 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				84AC31E01DC3864D00F0C6E1 /* Info.plist */,
 				84AC31D91DC3864D00F0C6E1 /* AppDelegate.swift */,
 				84AC31DB1DC3864D00F0C6E1 /* GameViewController.swift */,
 				84AC31DD1DC3864D00F0C6E1 /* Main.storyboard */,
-				84AC31E01DC3864D00F0C6E1 /* Info.plist */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -549,6 +573,7 @@
 				84AC31A71DC3864D00F0C6E1 /* Main.storyboard in Resources */,
 				84AC31AA1DC3864D00F0C6E1 /* LaunchScreen.storyboard in Resources */,
 				847FEA771DCEA56300C72D34 /* 0.0.tmx in Resources */,
+				841CC8B51DCFA04100D879FD /* kenpixel.ttf in Resources */,
 				84AC31EC1DC3864D00F0C6E1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +608,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				847FEA781DCEA56300C72D34 /* 0.0.tmx in Resources */,
+				841CC8B61DCFA04100D879FD /* kenpixel.ttf in Resources */,
 				847FEA6C1DCE959600C72D34 /* fireCave.png in Resources */,
 				84AC31DF1DC3864D00F0C6E1 /* Main.storyboard in Resources */,
 				84AC31EF1DC3864D00F0C6E1 /* Assets.xcassets in Resources */,
@@ -607,6 +633,7 @@
 				84A419DF1DC985E80090BC41 /* LoadScene.swift in Sources */,
 				84AC31A21DC3864D00F0C6E1 /* AppDelegate.swift in Sources */,
 				847F67051DCA6B6F00E8389D /* Tile.swift in Sources */,
+				847FEA7A1DCEAA3400C72D34 /* Player.swift in Sources */,
 				84B413EE1DCABA3500D125E9 /* GameWorld.swift in Sources */,
 				84B414121DCAC5A900D125E9 /* SKTEffects.swift in Sources */,
 				847F66FE1DCA6B0100E8389D /* MapManager.swift in Sources */,
@@ -616,6 +643,8 @@
 				84B414161DCAC5A900D125E9 /* Vector3.swift in Sources */,
 				848DF3331DC38CF400D9BC7A /* GameScene.swift in Sources */,
 				848DF32E1DC38CEA00D9BC7A /* Control.swift in Sources */,
+				84240ADD1DCEBD4A00858870 /* GameMath.swift in Sources */,
+				844E07631DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */,
 				84B414021DCAC5A900D125E9 /* CGPoint+Extensions.swift in Sources */,
 				84B413F11DCABA4A00D125E9 /* GameCamera.swift in Sources */,
 				84A7FE651DC75A7E00639570 /* Label.swift in Sources */,
@@ -660,6 +689,7 @@
 				84A419E11DC985EA0090BC41 /* LoadScene.swift in Sources */,
 				84AC31DA1DC3864D00F0C6E1 /* AppDelegate.swift in Sources */,
 				847F67061DCA6B6F00E8389D /* Tile.swift in Sources */,
+				847FEA7B1DCEAA3400C72D34 /* Player.swift in Sources */,
 				84B413EF1DCABA3500D125E9 /* GameWorld.swift in Sources */,
 				84B414131DCAC5A900D125E9 /* SKTEffects.swift in Sources */,
 				847F67001DCA6B0100E8389D /* MapManager.swift in Sources */,
@@ -669,6 +699,8 @@
 				84B414171DCAC5A900D125E9 /* Vector3.swift in Sources */,
 				848DF3361DC38CF400D9BC7A /* GameScene.swift in Sources */,
 				848DF3311DC38CEA00D9BC7A /* Control.swift in Sources */,
+				84240ADE1DCEBD4A00858870 /* GameMath.swift in Sources */,
+				844E07641DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */,
 				84B414031DCAC5A900D125E9 /* CGPoint+Extensions.swift in Sources */,
 				84B413F21DCABA4A00D125E9 /* GameCamera.swift in Sources */,
 				84A7FE681DC75A7E00639570 /* Label.swift in Sources */,
@@ -779,6 +811,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -820,6 +853,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
@@ -836,7 +870,6 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -852,7 +885,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -869,7 +901,6 @@
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -887,7 +918,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};
@@ -898,7 +928,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JZ3J7RVLD7;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PabloHenri91.GameV;
 				PRODUCT_NAME = GameV;
@@ -915,7 +944,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = JZ3J7RVLD7;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.PabloHenri91.GameV;
 				PRODUCT_NAME = GameV;
@@ -938,7 +966,6 @@
 				PRODUCT_NAME = GameV;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -954,7 +981,6 @@
 				PRODUCT_NAME = GameV;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -968,7 +994,6 @@
 				DEVELOPMENT_TEAM = JZ3J7RVLD7;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PabloHenri91.GameV;
 				PRODUCT_NAME = GameV;
 				SDKROOT = macosx;
@@ -985,7 +1010,6 @@
 				DEVELOPMENT_TEAM = JZ3J7RVLD7;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PabloHenri91.GameV;
 				PRODUCT_NAME = GameV;
 				SDKROOT = macosx;

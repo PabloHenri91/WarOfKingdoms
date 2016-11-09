@@ -39,7 +39,7 @@ class Control: SKSpriteNode {
          verticalAlignment: verticalAlignments = .top) {
         
         let texture = SKTexture(imageNamed: name)
-        texture.filteringMode = .nearest
+        texture.filteringMode = GameScene.defaultFilteringMode
         
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
         
@@ -81,8 +81,16 @@ class Control: SKSpriteNode {
         )
     }
     
-    override func destroy() {
-        super.destroy()
+    override func removeFromParent() {
+        
+        for node in self.children {
+            node.removeFromParent()
+        }
+        
+        self.removeAllActions()
+        self.removeAllChildren()
+        super.removeFromParent()
+        
         Control.set.remove(self)
     }
     

@@ -37,10 +37,11 @@ class Chunk: SKNode, XMLParserDelegate {
         
         super.init()
         
+        self.load(x: x, y: y)
+        
         self.position = CGPoint(x: x * Int(Chunk.size.width),
                                 y: y * Int(Chunk.size.height))
         
-        self.load(x: x, y: y)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -78,8 +79,8 @@ class Chunk: SKNode, XMLParserDelegate {
                                     self.addChild(Tile(texture: texture, x: x, y: y))
                                     break
                                 }
-                                
                             }
+                            
                             break
                         }
                     }

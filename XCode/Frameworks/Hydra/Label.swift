@@ -10,6 +10,11 @@ import SpriteKit
 
 class Label: Control {
     
+    enum fontName: String {
+        case verdana = "Verdana"
+        case kenPixel = "KenPixel Regular"
+    }
+    
     enum fontSize: CGFloat {
         case fontSize8 = 8
         case fontSize16 = 16
@@ -22,30 +27,36 @@ class Label: Control {
             return self.labelNode.text ?? ""
         }
         set(newValue) {
-            self.labelNode.text = newValue.translation()
+            let text = newValue.translation()
+            self.labelNode.text = text
+            for labelNode in self.shadowLabelNodes {
+                labelNode.text = text
+            }
         }
     }
     
     private var labelNode: SKLabelNode
+    private var shadowLabelNodes: [SKLabelNode]
     
     init(horizontalAlignmentMode: SKLabelHorizontalAlignmentMode = .center,
          verticalAlignmentMode: SKLabelVerticalAlignmentMode = .center,
-         fontName: String? = nil,
+         fontName: fontName = fontName.kenPixel,
          text: String,
          fontSize: fontSize = .fontSize16,
-         fontColor: SKColor = SKColor.black,
-         x: CGFloat, y: CGFloat,
+         fontColor: SKColor = GameColors.fontBlack,
+         x: CGFloat = 0, y: CGFloat = 0,
          horizontalAlignment: horizontalAlignments = .left,
-         verticalAlignment: verticalAlignments = .top) {
+         verticalAlignment: verticalAlignments = .top
+        ) {
         
-        self.labelNode = SKLabelNode(text: fontName)
-        
+        self.labelNode = SKLabelNode(fontNamed: fontName.rawValue)
         self.labelNode.fontSize = fontSize.rawValue
         self.labelNode.fontColor = fontColor
         self.labelNode.horizontalAlignmentMode = horizontalAlignmentMode
         self.labelNode.verticalAlignmentMode = verticalAlignmentMode
-        
         self.labelNode.text = text
+        
+        self.shadowLabelNodes = [SKLabelNode]()
         
         super.init()
         
@@ -65,6 +76,39 @@ class Label: Control {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func addShadow(color: SKColor = GameColors.fontWhite, x: Int = 1, y: Int = -1) {
+        let shadowLabelNode = SKLabelNode(fontNamed: self.labelNode.fontName)
+        shadowLabelNode.fontSize = self.labelNode.fontSize
+        shadowLabelNode.fontColor = color
+        shadowLabelNode.horizontalAlignmentMode = self.labelNode.horizontalAlignmentMode
+        shadowLabelNode.verticalAlignmentMode = self.labelNode.verticalAlignmentMode
+        shadowLabelNode.text = self.labelNode.text
+        shadowLabelNode.position = CGPoint(x: x, y: y)
+        
+        self.shadowLabelNodes.append(shadowLabelNode)
+        self.addChild(shadowLabelNode)
+        self.labelNode.bringToFront()
+    }
+    
+    func addBorder(color: SKColor = GameColors.fontWhite, thickness: Int = 1) {
+        for x in -1...1 {
+            for y in -1...1 {
+                if !(x == 0 && y == 0) {
+                    self.addShadow(color: color, x: x, y: y)
+                }
+            }
+        }
+    }
+    
+    #if os(OSX)
+    static func printFonts() {
+        let fonts = NSFontManager.shared().availableFontFamilies
+        for name in fonts {
+            print("\(name)")
+        }
+    }
+    #endif
 
 }
 

@@ -13,12 +13,10 @@ class Tile: SKNode {
     init(texture: SKTexture?, x: Int, y: Int) {
         
         super.init()
-        
-        self.position = CGPoint(x: x * Int(Chunk.tilewidth),
-                                y: -y * Int(Chunk.tileheight))
+        self.position = CGPoint(x: x * Int(Chunk.tilewidth) - Int(Chunk.size.width)/2 + Int(Chunk.tilewidth/2),
+                                y: -y * Int(Chunk.tileheight) + Int(Chunk.size.height)/2 - Int(Chunk.tileheight/2))
         
         let spriteNode = SKSpriteNode(texture: texture)
-        spriteNode.texture?.filteringMode = .nearest
         self.addChild(spriteNode)
     }
     
