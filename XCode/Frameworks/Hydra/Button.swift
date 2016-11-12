@@ -16,45 +16,68 @@ class Button: Control {
                   horizontalAlignment: horizontalAlignments = .left,
                   verticalAlignment: verticalAlignments = .top) {
         
-        event = {}
+        event = {
+            print("touchUp " + name)
+        }
         
         super.init(imageNamed: name, x: x, y: y, horizontalAlignment: horizontalAlignment, verticalAlignment: verticalAlignment)
+        
+        self.isUserInteractionEnabled = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func touchDown(atPoint pos : CGPoint) {
+    
+    func touchDown(touch: UITouch) {
         
-        resetPosition()
+        self.resetPosition()
         
         let duration:Double = 0.125
         
         let x = position.x + (size.width/2) * 0.05
         let y = position.y - (size.height/2) * 0.05
         
-        run(SKAction.group([
+        self.run(SKAction.group([
             SKAction.scale(to: 0.95 , duration: duration),
             SKAction.move(to: CGPoint(x: x, y: y), duration: duration)
             ]))
     }
     
-    func touchMoved(toPoint pos : CGPoint) {
+    func touchMoved(touch: UITouch) {
         
     }
     
-    func touchUp(atPoint pos : CGPoint) {
+    func touchUp(touch: UITouch) {
         
         let duration:Double = 0.125
         
-        run(SKAction.group([
+        self.run(SKAction.group([
             SKAction.scale(to: 1.0 , duration: duration),
-            SKAction.move(to: screenPosition(), duration: duration)
+            SKAction.move(to: self.screenPosition(), duration: duration)
             ]))
         
-        if contains(pos) {
-            event()
+        if let parent = self.parent {
+            if self.contains(touch.location(in: parent)) {
+                event()
+            }
         }
     }
+    
+    #if os(OSX)
+    
+    override func mouseDown(with event: UITouch) {
+        self.touchDown(touch: event)
+    }
+    
+    override func mouseDragged(with event: UITouch) {
+        self.touchMoved(touch: event)
+        
+    }
+    
+    override func mouseUp(with event: UITouch) {
+        self.touchUp(touch: event)
+    }
+    
+    #endif
 }

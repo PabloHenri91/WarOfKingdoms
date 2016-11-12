@@ -39,7 +39,7 @@ class Player: SKNode {
             label.position = position + CGPoint(x: 0, y: 32)
             parent.addChild(label)
             
-            let duration: TimeInterval = 2
+            let duration: TimeInterval = 1
             
             label.run(SKAction.move(by: CGVector(dx: 0, dy: 32), duration: duration))
             label.run(SKAction.sequence([

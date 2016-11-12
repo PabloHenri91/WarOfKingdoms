@@ -19,15 +19,13 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    static var currentGameScene = GameScene()
-    
+    static var currentGameScene: GameScene!
     static var currentTime: TimeInterval = 0
     
     static let defaultTransition = SKTransition.crossFade(withDuration: 0.25)
     static let defaultFilteringMode: SKTextureFilteringMode = .nearest
     
     static let defaultSize = CGSize(width: 568, height: 320)
-    
     static var viewBoundsSize = CGSize.zero
     static var sketchSize = CGSize.zero
     static var currentSize = CGSize.zero
@@ -118,16 +116,17 @@ class GameScene: SKScene {
     
     #if os(OSX)
     
-    override func mouseDown(with event: NSEvent) {
-        touchDown(touch: event)
+    override func mouseDown(with event: UITouch) {
+        self.touchDown(touch: event)
     }
     
-    override func mouseDragged(with event: NSEvent) {
-        touchMoved(touch: event)
+    override func mouseDragged(with event: UITouch) {
+        self.touchMoved(touch: event)
+        
     }
     
-    override func mouseUp(with event: NSEvent) {
-        touchUp(touch: event)
+    override func mouseUp(with event: UITouch) {
+        self.touchUp(touch: event)
     }
     
     override func keyDown(with event: NSEvent) {

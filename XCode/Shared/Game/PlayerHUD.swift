@@ -21,6 +21,8 @@ class PlayerHUD: Control {
         }
     }
     
+    var boxPlayerXP: BoxPlayerXP
+    
     private var xp: Int
     
     var xpBarFill: Control
@@ -35,19 +37,31 @@ class PlayerHUD: Control {
         self.xpBarFill = Control(imageNamed: "xpBar8x34Fill", x: 7, y: 33)
         self.xpBarFill.zRotation = π
         
+        self.boxPlayerXP = BoxPlayerXP()
+        self.boxPlayerXP.isHidden = true
+        
         super.init()
         
         self.level = level
         
-        let levelBackground = Control(imageNamed: "boxWhite34x34", x: 162, y: 278, horizontalAlignment: .center, verticalAlignment: .bottom)
+        let levelBackground = Button(imageNamed: "boxWhite34x34", x: 162, y: 278, horizontalAlignment: .center, verticalAlignment: .bottom)
         self.addChild(levelBackground)
         levelBackground.addChild(self.labelLevel)
+        
+        levelBackground.event = { [weak self] in
+            guard let playerHUD = self else { return }
+            playerHUD.boxPlayerXP.isHidden = !playerHUD.boxPlayerXP.isHidden
+        }
         
         //
         let xpBarBackground = Control(imageNamed: "xpBar8x34Background", x: 196, y: 278, horizontalAlignment: .center, verticalAlignment: .bottom)
         self.addChild(xpBarBackground)
         
         xpBarBackground.addChild(self.xpBarFill)
+        
+        self.addChild(self.boxPlayerXP)
+        
+        self.setXP(xp: self.xp)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -67,6 +81,8 @@ class PlayerHUD: Control {
         let progress = requiredXP / totalRequiredXP
         
         self.xpBarFill.yScale = 1 - progress
+        
+        self.boxPlayerXP.text = "\(Int(totalRequiredXP - requiredXP))/\(Int(totalRequiredXP))"
     }
     
 }

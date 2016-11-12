@@ -31,6 +31,13 @@ class MainMenuScene: GameScene {
         self.addChild(Label(text: "MainMenuScene", x: 100, y: 100))
         
         self.addChild(self.buttonPlay)
+        
+        self.buttonPlay.event = { [weak self] in
+            guard let scene = self else { return }
+            if scene.nextState == .mainMenu {
+                scene.nextState = .mission
+            }
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -41,9 +48,11 @@ class MainMenuScene: GameScene {
             switch self.state {
                 
             case .mainMenu:
+                
                 break
                 
             case .mission:
+                
                 break
             }
         } else {
@@ -69,9 +78,7 @@ class MainMenuScene: GameScene {
     }
     
     override func touchUp(touch: UITouch) {
-        if self.buttonPlay.contains(touch) {
-            self.nextState = .mission
-        }
+        
     }
     
 }
