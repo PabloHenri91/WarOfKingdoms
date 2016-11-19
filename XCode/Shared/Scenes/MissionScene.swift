@@ -66,6 +66,11 @@ class MissionScene: GameScene {
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
             
+        case 14: // e
+            self.player.loadTextures()
+            self.player.loadActions()
+            break
+            
         case 16: // y
             if self.gameCamera.node == nil {
                 self.gameCamera.node = self.player

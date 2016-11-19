@@ -22,12 +22,13 @@ class Tileset {
     func load() {
         
         let texture = SKTexture(imageNamed: self.name)
+        texture.filteringMode = GameScene.defaultFilteringMode
         let size = texture.size()
         
         var column: CGFloat = 0
         var row: CGFloat = 1
         
-        for _ in 0..<tilecount {
+        for _ in 0..<self.tilecount {
             
             if Int(column) >= self.columns {
                 column = 0

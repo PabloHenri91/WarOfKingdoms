@@ -16,6 +16,11 @@ class Player: SKSpriteNode {
     var xp = 0
     
     // Movement
+    var actionMoveA = SKAction()
+    var actionMoveS = SKAction()
+    var actionMoveD = SKAction()
+    var actionMoveW = SKAction()
+    
     var isMoving = false
     
     enum moveType {
@@ -25,13 +30,24 @@ class Player: SKSpriteNode {
         case moveW
     }
     
-    var lastMove: moveType = .moveA
+    var lastMove: moveType = .moveS
     
     // Controls
     var moveA = false
     var moveS = false
     var moveD = false
     var moveW = false
+    
+    // Textures
+    var texturesA = [SKTexture]()
+    var texturesS = [SKTexture]()
+    var texturesD = [SKTexture]()
+    var texturesW = [SKTexture]()
+    
+    var texturesMoveA = [SKTexture]()
+    var texturesMoveS = [SKTexture]()
+    var texturesMoveD = [SKTexture]()
+    var texturesMoveW = [SKTexture]()
     
     init() {
         
@@ -45,6 +61,9 @@ class Player: SKSpriteNode {
         self.position = CGPoint(x: Chunk.tilewidth/2, y: Chunk.tileheight/2)
         
         self.loadPhysics()
+        
+        self.loadTextures()//(name: "charaTeste")
+        self.loadActions()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,6 +84,128 @@ class Player: SKSpriteNode {
         self.physicsBody = physicsBody
     }
     
+    func loadActions() {
+        
+        let speed: Double = 64
+        let distance: Double = Double(Chunk.tilewidth)
+        
+        let moveActionDuration: TimeInterval = distance/speed
+        
+        self.actionMoveA = SKAction.group([
+            SKAction.sequence([
+                SKAction.animate(with: self.texturesMoveA, timePerFrame: moveActionDuration/Double(self.texturesMoveA.count), resize: false, restore: false),
+                SKAction.animate(with: self.texturesA, timePerFrame: moveActionDuration/Double(self.texturesA.count), resize: false, restore: false)
+                ]),
+            SKAction.sequence([
+                SKAction.moveBy(x: -1 * Chunk.tilewidth, y: 0, duration: moveActionDuration),
+                SKAction.run { [weak self] in
+                    self?.isMoving = false
+                }
+                ])
+            ])
+        
+        self.actionMoveS = SKAction.group([
+            SKAction.sequence([
+                SKAction.animate(with: self.texturesMoveS, timePerFrame: moveActionDuration/Double(self.texturesMoveS.count)),
+                SKAction.animate(with: self.texturesS, timePerFrame: moveActionDuration/Double(self.texturesS.count))
+                ]),
+            SKAction.sequence([
+                SKAction.moveBy(x: 0, y: -1 * Chunk.tileheight, duration: moveActionDuration),
+                SKAction.run { [weak self] in
+                    self?.isMoving = false
+                }
+                ])
+            ])
+        
+        self.actionMoveD = SKAction.group([
+            SKAction.sequence([
+                SKAction.animate(with: self.texturesMoveD, timePerFrame: moveActionDuration/Double(self.texturesMoveD.count)),
+                SKAction.animate(with: self.texturesD, timePerFrame: moveActionDuration/Double(self.texturesD.count))
+                ]),
+            SKAction.sequence([
+                    SKAction.moveBy(x: 1 * Chunk.tilewidth, y: 0, duration: moveActionDuration),
+                    SKAction.run { [weak self] in
+                        self?.isMoving = false
+                    }
+                ])
+            ])
+        
+        self.actionMoveW = SKAction.group([
+            SKAction.sequence([
+                SKAction.animate(with: self.texturesMoveW, timePerFrame: moveActionDuration/Double(self.texturesMoveW.count)),
+                SKAction.animate(with: self.texturesW, timePerFrame: moveActionDuration/Double(self.texturesW.count))
+                ]),
+            SKAction.sequence([
+                SKAction.moveBy(x: 0, y: 1 * Chunk.tileheight, duration: moveActionDuration),
+                SKAction.run { [weak self] in
+                    self?.isMoving = false
+                }
+                ])
+            ])
+    }
+    
+    func loadTextures(name: String = "chara\(1 + Int.random(5))\(1 + Int.random(8))") {
+        
+        self.texturesA = [SKTexture]()
+        self.texturesS = [SKTexture]()
+        self.texturesD = [SKTexture]()
+        self.texturesW = [SKTexture]()
+        
+        self.texturesMoveA = [SKTexture]()
+        self.texturesMoveS = [SKTexture]()
+        self.texturesMoveD = [SKTexture]()
+        self.texturesMoveW = [SKTexture]()
+        
+        let tileset = Tileset()
+        tileset.tilewidth = 26
+        tileset.tileheight = 36
+        tileset.columns = 3
+        tileset.tilecount = 12
+        
+        tileset.name = name
+        tileset.load()
+        
+        self.texture = tileset.tileTextures[1] // S
+        self.size = self.texture!.size()
+        
+        self.anchorPoint.y = 1 - (self.size.height/32)/2
+        
+        self.texturesA.append(tileset.tileTextures[4])
+        self.texturesS.append(tileset.tileTextures[1])
+        self.texturesD.append(tileset.tileTextures[7])
+        self.texturesW.append(tileset.tileTextures[10])
+        
+        
+        self.texturesMoveA += [
+            tileset.tileTextures[5],
+            tileset.tileTextures[4],
+            tileset.tileTextures[3],
+            tileset.tileTextures[4]
+        ]
+        
+        self.texturesMoveS += [
+            tileset.tileTextures[2],
+            tileset.tileTextures[1],
+            tileset.tileTextures[0],
+            tileset.tileTextures[1]
+        ]
+        self.texturesMoveD += [
+            
+            tileset.tileTextures[8],
+            tileset.tileTextures[7],
+            tileset.tileTextures[6],
+            tileset.tileTextures[7]
+        ]
+        
+        self.texturesMoveW += [
+            tileset.tileTextures[11],
+            tileset.tileTextures[10],
+            tileset.tileTextures[9],
+            tileset.tileTextures[10]
+        ]
+    }
+    
+    
     func update() {
         
         self.move()
@@ -75,8 +216,6 @@ class Player: SKSpriteNode {
         if self.isMoving {
             return
         }
-        
-        let moveActionDuration: TimeInterval = 1/60 * 5
         
         var moveDirectionX: CGFloat = 0
         var moveDirectionY: CGFloat = 0
@@ -144,18 +283,11 @@ class Player: SKSpriteNode {
             
             if moveDirectionX > 0 {
                 self.lastMove = .moveD
+                self.run(self.actionMoveD)
             } else {
                 self.lastMove = .moveA
+                self.run(self.actionMoveA)
             }
-            
-            self.run(SKAction.sequence(
-                [
-                    SKAction.moveBy(x: moveDirectionX * Chunk.tilewidth, y: 0, duration: moveActionDuration),
-                    SKAction.run { [weak self] in
-                        self?.isMoving = false
-                    }
-                ]
-            ))
             
         } else {
             if moveDirectionY != 0 {
@@ -163,18 +295,11 @@ class Player: SKSpriteNode {
                 
                 if moveDirectionY > 0 {
                     self.lastMove = .moveW
+                    self.run(self.actionMoveW)
                 } else {
                     self.lastMove = .moveS
+                    self.run(self.actionMoveS)
                 }
-                
-                self.run(SKAction.sequence(
-                    [
-                        SKAction.moveBy(x: 0, y: moveDirectionY * Chunk.tileheight, duration: moveActionDuration),
-                        SKAction.run { [weak self] in
-                            self?.isMoving = false
-                        }
-                    ]
-                ))
             }
         }
     }
