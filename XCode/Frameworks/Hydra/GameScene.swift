@@ -74,6 +74,7 @@ class GameScene: SKScene {
     }
     #else
     override func didMove(to view: SKView) {
+        super.didMove(to: view)
         self.load()
     }
     #endif

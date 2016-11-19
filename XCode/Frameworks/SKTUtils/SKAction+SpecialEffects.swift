@@ -22,7 +22,7 @@
 
 import SpriteKit
 
-public extension SKAction {
+extension SKAction {
     /**
      * Creates a screen shake animation.
      *
@@ -36,7 +36,7 @@ public extension SKAction {
         let newPosition = oldPosition + amount
         
         let effect = SKTMoveEffect(node: node, duration: duration, startPosition: newPosition, endPosition: oldPosition)
-        effect.timingFunction = SKTCreateShakeFunction(oscillations)
+        effect.timingFunction = SKTTimingFunctions.createShakeFunction(oscillations)
         
         return SKAction.actionWithEffect(effect)
     }
@@ -55,7 +55,7 @@ public extension SKAction {
         let newAngle = oldAngle + angle
         
         let effect = SKTRotateEffect(node: node, duration: duration, startAngle: newAngle, endAngle: oldAngle)
-        effect.timingFunction = SKTCreateShakeFunction(oscillations)
+        effect.timingFunction = SKTTimingFunctions.createShakeFunction(oscillations)
         
         return SKAction.actionWithEffect(effect)
     }
@@ -74,7 +74,7 @@ public extension SKAction {
         let newScale = oldScale * amount
         
         let effect = SKTScaleEffect(node: node, duration: duration, startScale: newScale, endScale: oldScale)
-        effect.timingFunction = SKTCreateShakeFunction(oscillations)
+        effect.timingFunction = SKTTimingFunctions.createShakeFunction(oscillations)
         
         return SKAction.actionWithEffect(effect)
     }
@@ -85,7 +85,7 @@ public extension SKAction {
     static func colorGlitchWithScene(_ scene: SKScene, originalColor: SKColor, duration: TimeInterval) -> SKAction {
         return SKAction.customAction(withDuration: duration) {(node, elapsedTime) in
             if elapsedTime < CGFloat(duration) {
-                scene.backgroundColor = SKColorWithRGB(Int.random(0...255), g: Int.random(0...255), b: Int.random(0...255))
+                scene.backgroundColor = SKColor(r: Int.random(0...255), g: Int.random(0...255), b: Int.random(0...255))
             } else {
                 scene.backgroundColor = originalColor
             }

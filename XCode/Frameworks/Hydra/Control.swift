@@ -102,7 +102,7 @@ class Control: SKSpriteNode {
     }
 }
 
-public extension SKNode {
+extension SKNode {
     
     func destroy() {
         

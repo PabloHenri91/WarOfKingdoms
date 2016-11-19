@@ -10,18 +10,22 @@ import SpriteKit
 
 class GameCamera: SKNode {
     
-    var node = SKNode()
+    var node: SKNode?
     
     func update() {
-        let newPosition = self.node.position
-        self.position = CGPoint(
-            x: newPosition.x - GameScene.currentSize.width/2,
-            y: newPosition.y + GameScene.currentSize.height/2)
+        
+        if let node = self.node {
+            let newPosition = node.position
+            self.position = CGPoint(
+                x: newPosition.x - GameScene.currentSize.width/2,
+                y: newPosition.y + GameScene.currentSize.height/2)
+        }
+        
         self.scene?.centerOnNode(node: self)
     }
 }
 
-public extension SKScene {
+extension SKScene {
     
     func centerOnNode(node: SKNode) {
         if let parent = node.parent {

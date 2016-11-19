@@ -22,7 +22,7 @@
 
 import SpriteKit
 
-public extension SKAction {
+extension SKAction {
     /**
      * Performs an action after the specified delay.
      */

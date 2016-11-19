@@ -21,6 +21,12 @@ class LoadScene: GameScene {
     override func load() {
         super.load()
         
+        #if DEBUG
+            self.view?.showsFPS = true
+            self.view?.showsNodeCount = true
+            self.view?.showsPhysics = true
+        #endif
+        
         self.addChild(Label(text: "LoadScene", x: 100, y: 100))
     }
     

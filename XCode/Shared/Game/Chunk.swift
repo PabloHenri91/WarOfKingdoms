@@ -17,10 +17,10 @@ class Chunk: SKNode, XMLParserDelegate {
         case decorationTop = "decorationTop"
     }
     
-    static var width = 64
-    static var height = 64
-    static var tilewidth = 32
-    static var tileheight = 32
+    static var width: CGFloat = 64
+    static var height: CGFloat = 64
+    static var tilewidth: CGFloat = 32
+    static var tileheight: CGFloat = 32
     
     static var size: CGSize {
         get {
@@ -58,10 +58,10 @@ class Chunk: SKNode, XMLParserDelegate {
         }
     }
     
-    func loadLayer(data: [String]) {
+    func loadLayer(data: [String], loadPhysics: Bool = false) {
         var i = data.makeIterator()
-        for y in 0..<Chunk.height {
-            for x in 0..<Chunk.width {
+        for y in 0..<Int(Chunk.height) {
+            for x in 0..<Int(Chunk.width) {
                 if let id = Int(i.next()?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) ?? "") {
                     if id != 0 {
                         switch(id) {
@@ -76,7 +76,7 @@ class Chunk: SKNode, XMLParserDelegate {
                                 
                                 if id > lastTilecount && id <= tilecount {
                                     let texture = tileset.tileTextures[id - lastTilecount - 1]
-                                    self.addChild(Tile(texture: texture, x: x, y: y))
+                                    self.addChild(Tile(texture: texture, x: x, y: y, loadPhysics: loadPhysics))
                                     break
                                 }
                             }
@@ -93,10 +93,10 @@ class Chunk: SKNode, XMLParserDelegate {
         
         switch elementName {
         case "map":
-            Chunk.width = Int(attributeDict["width"]!)!
-            Chunk.height = Int(attributeDict["height"]!)!
-            Chunk.tilewidth = Int(attributeDict["tilewidth"]!)!
-            Chunk.tileheight = Int(attributeDict["tileheight"]!)!
+            Chunk.width = CGFloat(Int(attributeDict["width"]!)!)
+            Chunk.height = CGFloat(Int(attributeDict["height"]!)!)
+            Chunk.tilewidth = CGFloat(Int(attributeDict["tilewidth"]!)!)
+            Chunk.tileheight = CGFloat(Int(attributeDict["tileheight"]!)!)
             break
         case "tileset":
             let tileset = Tileset()
@@ -131,7 +131,7 @@ class Chunk: SKNode, XMLParserDelegate {
         
         let string = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if string.isEmpty == false {
-            self.loadLayer(data: string.components(separatedBy: ","))
+            self.loadLayer(data: string.components(separatedBy: ","), loadPhysics: self.layerName == "walls")
         }
     }
     

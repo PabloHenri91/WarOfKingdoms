@@ -30,7 +30,7 @@ class MissionScene: GameScene {
         
         self.addChild(self.gameWorld)
         self.gameWorld.addChild(self.gameCamera)
-        self.gameWorld.addChild(self.gameCamera.node)
+        self.gameCamera.node = self.player
         self.gameCamera.update()
         
         self.mapManager.reloadMap(position: self.player.position)
@@ -44,27 +44,54 @@ class MissionScene: GameScene {
         super.update(currentTime)
         
         self.mapManager.update(position: self.player.position)
+        
+        self.player.update()
     }
     
     override func didFinishUpdate() {
         super.didFinishUpdate()
         
-        self.gameCamera.node.position = self.player.position
         self.gameCamera.update()
     }
     
     override func touchMoved(touch: UITouch) {
         super.touchMoved(touch: touch)
         
-        self.player.position = self.player.position + touch.delta
+        if self.gameCamera.node == nil {
+            self.gameCamera.position = self.gameCamera.position + touch.delta
+        }
     }
     
     #if os(OSX)
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
             
+        case 16: // y
+            if self.gameCamera.node == nil {
+                self.gameCamera.node = self.player
+            } else {
+                self.gameCamera.node = nil
+            }
+            break
+            
         case 12: // q
             self.player.getXP(xp: Int.random(100))
+            break
+            
+        case 0, 123: // a, ⬅️
+            self.player.moveA = true
+            break
+            
+        case 1, 125: // s, ⬇️
+            self.player.moveS = true
+            break
+            
+        case 2, 124: // d, ➡️
+            self.player.moveD = true
+            break
+            
+        case 13, 126: // w, ⬆️
+            self.player.moveW = true
             break
             
         default:
@@ -72,5 +99,31 @@ class MissionScene: GameScene {
             break
         }
     }
+    
+    override func keyUp(with event: NSEvent) {
+        switch event.keyCode {
+            
+        case 0, 123: // a, ⬅️
+            self.player.moveA = false
+            break
+            
+        case 1, 125: // s, ⬇️
+            self.player.moveS = false
+            break
+            
+        case 2, 124: // d, ➡️
+            self.player.moveD = false
+            break
+            
+        case 13, 126: // w, ⬆️
+            self.player.moveW = false
+            break
+            
+        default:
+            print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
+            break
+        }
+    }
+    
     #endif
 }

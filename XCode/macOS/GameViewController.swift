@@ -22,11 +22,6 @@ class GameViewController: NSViewController, NSWindowDelegate {
         // Present the scene
         let skView = self.view as! SKView
         skView.presentScene(scene)
-        
-        #if DEBUG
-            skView.showsFPS = true
-            skView.showsNodeCount = true
-        #endif
     }
     
     override func viewDidAppear() {
