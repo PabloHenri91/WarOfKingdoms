@@ -10,13 +10,13 @@ import SpriteKit
 
 class Button: Control {
     
-    var event: () -> Void
+    var touchUpEvent: () -> Void
     
     override init(imageNamed name: String, x: CGFloat, y: CGFloat,
-                  horizontalAlignment: horizontalAlignments = .left,
-                  verticalAlignment: verticalAlignments = .top) {
+                  horizontalAlignment: horizontalAlignment = .left,
+                  verticalAlignment: verticalAlignment = .top) {
         
-        event = {
+        self.touchUpEvent = {
             print("touchUp " + name)
         }
         
@@ -59,7 +59,7 @@ class Button: Control {
         
         if let parent = self.parent {
             if self.contains(touch.location(in: parent)) {
-                event()
+                self.touchUpEvent()
             }
         }
     }

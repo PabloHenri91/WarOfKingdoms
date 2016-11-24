@@ -45,8 +45,8 @@ class Label: Control {
          fontSize: fontSize = .fontSize16,
          fontColor: SKColor = GameColors.fontBlack,
          x: CGFloat = 0, y: CGFloat = 0,
-         horizontalAlignment: horizontalAlignments = .left,
-         verticalAlignment: verticalAlignments = .top
+         horizontalAlignment: horizontalAlignment = .left,
+         verticalAlignment: verticalAlignment = .top
         ) {
         
         self.labelNode = SKLabelNode(fontNamed: fontName.rawValue)
@@ -58,19 +58,9 @@ class Label: Control {
         
         self.shadowLabelNodes = [SKLabelNode]()
         
-        super.init()
+        super.init(x: x, y: y, horizontalAlignment: horizontalAlignment, verticalAlignment: verticalAlignment)
         
         self.addChild(self.labelNode)
-        
-        self.anchorPoint = CGPoint(x: 0, y: 1)
-        self.sketchPosition = CGPoint(x: x, y: y)
-        self.verticalAlignment = verticalAlignment
-        self.horizontalAlignment = horizontalAlignment
-        
-        self.resetPosition()
-        
-        Control.set.insert(self)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -23,14 +23,14 @@ class BoxPlayerXP: Button {
     
     init() {
         
-        self.label = Label(text: "?/?", fontSize: .fontSize8, x: 72, y: 10)
+        self.label = Label(text: "?/?", fontSize: .fontSize8, x: 72, y: 7)
         
         //boxWhite144x21
-        super.init(imageNamed: "boxWhite144x21", x: 60, y: 257, horizontalAlignment: .center, verticalAlignment: .bottom)
+        super.init(imageNamed: "boxWhite144x13", x: 3, y: 37, horizontalAlignment: .left, verticalAlignment: .top)
         
         self.addChild(self.label)
         
-        self.event = { [weak self] in
+        self.touchUpEvent = { [weak self] in
             guard let boxPlayerXP = self else { return }
             boxPlayerXP.isHidden = !boxPlayerXP.isHidden
         }

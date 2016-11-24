@@ -49,6 +49,10 @@ class Player: SKSpriteNode {
     var texturesMoveD = [SKTexture]()
     var texturesMoveW = [SKTexture]()
     
+    // Skills
+    var target: Player?
+    var skills = [Skill]()
+    
     init() {
         
         self.hud = PlayerHUD(level: self.level, xp: self.xp)
@@ -68,6 +72,18 @@ class Player: SKSpriteNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func keyDown(skillKeyCode: Skill.keyCode?) {
+        self.hud.boxPlayerSkills.keyDown(skillKeyCode: skillKeyCode, caster: self, target: self.target)
+    }
+    
+    func keyUp(skillKeyCode: Skill.keyCode?) {
+        
+    }
+    
+    func loadSkills() {
+        
     }
     
     func loadPhysics() {
@@ -144,7 +160,7 @@ class Player: SKSpriteNode {
             ])
     }
     
-    func loadTextures(name: String = "chara\(1 + Int.random(5))\(1 + Int.random(8))") {
+    func loadTextures(name: String = "chara\(1 + Int.random(8))\(1 + Int.random(8))") {
         
         self.texturesA = [SKTexture]()
         self.texturesS = [SKTexture]()

@@ -12,8 +12,8 @@ class Box: Control {
 
     
     override init(imageNamed name: String, x: CGFloat? = nil, y: CGFloat? = nil,
-                  horizontalAlignment: horizontalAlignments = .center,
-                  verticalAlignment: verticalAlignments = .center) {
+                  horizontalAlignment: horizontalAlignment = .center,
+                  verticalAlignment: verticalAlignment = .center) {
         
         super.init(imageNamed: name, x: x ?? 0, y: y ?? 0,
                    horizontalAlignment: horizontalAlignment,

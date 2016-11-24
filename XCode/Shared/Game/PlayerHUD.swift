@@ -22,10 +22,10 @@ class PlayerHUD: Control {
     }
     
     var boxPlayerXP: BoxPlayerXP
-    
     private var xp: Int
-    
     var xpBarFill: Control
+    
+    var boxPlayerSkills: BoxPlayerSkills
     
     init(level: Int, xp: Int) {
         
@@ -40,21 +40,23 @@ class PlayerHUD: Control {
         self.boxPlayerXP = BoxPlayerXP()
         self.boxPlayerXP.isHidden = true
         
-        super.init()
+        self.boxPlayerSkills = BoxPlayerSkills()
+        
+        super.init(x: 0, y: 0)
         
         self.level = level
         
-        let levelBackground = Button(imageNamed: "boxWhite34x34", x: 162, y: 278, horizontalAlignment: .center, verticalAlignment: .bottom)
+        let levelBackground = Button(imageNamed: "boxWhite34x34", x: 3, y: 3, horizontalAlignment: .left, verticalAlignment: .top)
         self.addChild(levelBackground)
         levelBackground.addChild(self.labelLevel)
         
-        levelBackground.event = { [weak self] in
+        levelBackground.touchUpEvent = { [weak self] in
             guard let playerHUD = self else { return }
             playerHUD.boxPlayerXP.isHidden = !playerHUD.boxPlayerXP.isHidden
         }
         
         //
-        let xpBarBackground = Control(imageNamed: "xpBar8x34Background", x: 196, y: 278, horizontalAlignment: .center, verticalAlignment: .bottom)
+        let xpBarBackground = Control(imageNamed: "xpBar8x34Background", x: 37, y: 3, horizontalAlignment: .left, verticalAlignment: .top)
         self.addChild(xpBarBackground)
         
         xpBarBackground.addChild(self.xpBarFill)
@@ -62,6 +64,8 @@ class PlayerHUD: Control {
         self.addChild(self.boxPlayerXP)
         
         self.setXP(xp: self.xp)
+        
+        self.addChild(self.boxPlayerSkills)
     }
     
     required init?(coder aDecoder: NSCoder) {

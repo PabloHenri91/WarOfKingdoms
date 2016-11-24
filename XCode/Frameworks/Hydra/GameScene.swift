@@ -65,7 +65,7 @@ class GameScene: SKScene {
     }
     
     func load() {
-        scaleMode = SKSceneScaleMode.aspectFit
+        self.scaleMode = SKSceneScaleMode.aspectFit
     }
     
     #if os(watchOS)

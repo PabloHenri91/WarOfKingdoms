@@ -12,37 +12,49 @@ class Control: SKSpriteNode {
     
     static var set = Set<Control>()
     
-    enum horizontalAlignments: CGFloat {
+    enum horizontalAlignment: CGFloat {
         case left = 0
         case center = 1
         case right = 2
     }
     
-    enum verticalAlignments: CGFloat {
+    enum verticalAlignment: CGFloat {
         case top = 0
         case center = 1
         case bottom = 2
     }
     
     
-    var verticalAlignment: verticalAlignments = .top
-    var horizontalAlignment: horizontalAlignments = .left
+    var verticalAlignment: verticalAlignment = .top
+    var horizontalAlignment: horizontalAlignment = .left
     
     var sketchPosition: CGPoint = CGPoint.zero
     
-    init() {
-        super.init(texture: nil, color: SKColor.clear, size: CGSize(width: 1, height: 1))
+    init(x: CGFloat, y: CGFloat,
+         horizontalAlignment: horizontalAlignment = .left,
+         verticalAlignment: verticalAlignment = .top,
+         color: SKColor = SKColor.clear, size: CGSize = CGSize(width: 1, height: 1)) {
+        
+        super.init(texture: nil, color: color, size: size)
+        
+        self.load(x: x, y: y, horizontalAlignment: horizontalAlignment, verticalAlignment: verticalAlignment)
     }
     
     init(imageNamed name: String, x: CGFloat, y: CGFloat,
-         horizontalAlignment: horizontalAlignments = .left,
-         verticalAlignment: verticalAlignments = .top) {
+         horizontalAlignment: horizontalAlignment = .left,
+         verticalAlignment: verticalAlignment = .top) {
         
         let texture = SKTexture(imageNamed: name)
         texture.filteringMode = GameScene.defaultFilteringMode
         
         super.init(texture: texture, color: SKColor.clear, size: texture.size())
         
+        self.load(x: x, y: y, horizontalAlignment: horizontalAlignment, verticalAlignment: verticalAlignment)
+    }
+    
+    private func load(x: CGFloat, y: CGFloat,
+                      horizontalAlignment: horizontalAlignment = .left,
+                      verticalAlignment: verticalAlignment = .top) {
         self.anchorPoint = CGPoint(x: 0, y: 1)
         self.sketchPosition = CGPoint(x: x, y: y)
         self.verticalAlignment = verticalAlignment

@@ -11,14 +11,22 @@
 		841CC8B61DCFA04100D879FD /* kenpixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 841CC8B41DCFA04100D879FD /* kenpixel.ttf */; };
 		84240ADD1DCEBD4A00858870 /* GameMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84240ADC1DCEBD4A00858870 /* GameMath.swift */; };
 		84240ADE1DCEBD4A00858870 /* GameMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84240ADC1DCEBD4A00858870 /* GameMath.swift */; };
+		842F24581DE3250D00FFD89E /* SkillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842F24571DE3250D00FFD89E /* SkillButton.swift */; };
+		842F24591DE3250D00FFD89E /* SkillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842F24571DE3250D00FFD89E /* SkillButton.swift */; };
 		844E07631DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */; };
 		844E07641DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */; };
+		844FEC241DE47C6E006EC500 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FEC231DE47C6E006EC500 /* Spell.swift */; };
+		844FEC251DE47C6E006EC500 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844FEC231DE47C6E006EC500 /* Spell.swift */; };
 		845514D61DCA3A4100B3C3CF /* MissionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845514D51DCA3A4100B3C3CF /* MissionScene.swift */; };
 		845514D91DCA3A4100B3C3CF /* MissionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845514D51DCA3A4100B3C3CF /* MissionScene.swift */; };
 		8475701A1DD4A9980023DAA7 /* BoxPlayerXP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847570191DD4A9980023DAA7 /* BoxPlayerXP.swift */; };
 		8475701B1DD4A9980023DAA7 /* BoxPlayerXP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847570191DD4A9980023DAA7 /* BoxPlayerXP.swift */; };
 		8475701D1DD4A9D50023DAA7 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475701C1DD4A9D50023DAA7 /* Box.swift */; };
 		8475701E1DD4A9D50023DAA7 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8475701C1DD4A9D50023DAA7 /* Box.swift */; };
+		847AF8D51DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF8D41DE13D4200A63391 /* BoxPlayerSkills.swift */; };
+		847AF8D61DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF8D41DE13D4200A63391 /* BoxPlayerSkills.swift */; };
+		847AF8D81DE1465300A63391 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF8D71DE1465300A63391 /* Skill.swift */; };
+		847AF8D91DE1465300A63391 /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847AF8D71DE1465300A63391 /* Skill.swift */; };
 		847F66FE1DCA6B0100E8389D /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F66FD1DCA6B0100E8389D /* MapManager.swift */; };
 		847F67001DCA6B0100E8389D /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F66FD1DCA6B0100E8389D /* MapManager.swift */; };
 		847F67021DCA6B4C00E8389D /* Chunk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F67011DCA6B4C00E8389D /* Chunk.swift */; };
@@ -141,10 +149,14 @@
 /* Begin PBXFileReference section */
 		841CC8B41DCFA04100D879FD /* kenpixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kenpixel.ttf; sourceTree = "<group>"; };
 		84240ADC1DCEBD4A00858870 /* GameMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMath.swift; sourceTree = "<group>"; };
+		842F24571DE3250D00FFD89E /* SkillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillButton.swift; sourceTree = "<group>"; };
 		844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerHUD.swift; sourceTree = "<group>"; };
+		844FEC231DE47C6E006EC500 /* Spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		845514D51DCA3A4100B3C3CF /* MissionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionScene.swift; sourceTree = "<group>"; };
 		847570191DD4A9980023DAA7 /* BoxPlayerXP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxPlayerXP.swift; sourceTree = "<group>"; };
 		8475701C1DD4A9D50023DAA7 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		847AF8D41DE13D4200A63391 /* BoxPlayerSkills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxPlayerSkills.swift; sourceTree = "<group>"; };
+		847AF8D71DE1465300A63391 /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		847F66FD1DCA6B0100E8389D /* MapManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapManager.swift; sourceTree = "<group>"; };
 		847F67011DCA6B4C00E8389D /* Chunk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chunk.swift; sourceTree = "<group>"; };
 		847F67041DCA6B6F00E8389D /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -267,6 +279,7 @@
 		847F66FC1DCA6AC300E8389D /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				847AF8D41DE13D4200A63391 /* BoxPlayerSkills.swift */,
 				847570191DD4A9980023DAA7 /* BoxPlayerXP.swift */,
 				847F67011DCA6B4C00E8389D /* Chunk.swift */,
 				84240ADC1DCEBD4A00858870 /* GameMath.swift */,
@@ -274,6 +287,9 @@
 				847F66FD1DCA6B0100E8389D /* MapManager.swift */,
 				847FEA791DCEAA3400C72D34 /* Player.swift */,
 				844E07621DCF74BC00CDD1FE /* PlayerHUD.swift */,
+				847AF8D71DE1465300A63391 /* Skill.swift */,
+				842F24571DE3250D00FFD89E /* SkillButton.swift */,
+				844FEC231DE47C6E006EC500 /* Spell.swift */,
 				847F67041DCA6B6F00E8389D /* Tile.swift */,
 				848F0BC81DCE210300F9D547 /* Tileset.swift */,
 			);
@@ -330,11 +346,11 @@
 		84AC31951DC3864D00F0C6E1 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				84AC31991DC3864D00F0C6E1 /* Assets.xcassets */,
 				8413E5691DCF93B9000F631A /* Fonts */,
-				840E16D11DCC9C6300CD2298 /* Tiled */,
 				847F66FC1DCA6AC300E8389D /* Game */,
 				848DF3371DC38CFB00D9BC7A /* Scenes */,
-				84AC31991DC3864D00F0C6E1 /* Assets.xcassets */,
+				840E16D11DCC9C6300CD2298 /* Tiled */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -637,6 +653,7 @@
 				848DF33E1DC38D1000D9BC7A /* MainMenuScene.swift in Sources */,
 				84B414041DCAC5A900D125E9 /* CGVector+Extensions.swift in Sources */,
 				84A7FE601DC7527900639570 /* GameColors.swift in Sources */,
+				847AF8D81DE1465300A63391 /* Skill.swift in Sources */,
 				84B4140E1DCAC5A900D125E9 /* SKNode+Extensions.swift in Sources */,
 				84A419DF1DC985E80090BC41 /* LoadScene.swift in Sources */,
 				84AC31A21DC3864D00F0C6E1 /* AppDelegate.swift in Sources */,
@@ -644,6 +661,7 @@
 				847FEA7A1DCEAA3400C72D34 /* Player.swift in Sources */,
 				84B413EE1DCABA3500D125E9 /* GameWorld.swift in Sources */,
 				84B414121DCAC5A900D125E9 /* SKTEffects.swift in Sources */,
+				842F24581DE3250D00FFD89E /* SkillButton.swift in Sources */,
 				847F66FE1DCA6B0100E8389D /* MapManager.swift in Sources */,
 				84B4140C1DCAC5A900D125E9 /* SKColor+Extensions.swift in Sources */,
 				845514D61DCA3A4100B3C3CF /* MissionScene.swift in Sources */,
@@ -654,9 +672,11 @@
 				84240ADD1DCEBD4A00858870 /* GameMath.swift in Sources */,
 				844E07631DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */,
 				84B414021DCAC5A900D125E9 /* CGPoint+Extensions.swift in Sources */,
+				847AF8D51DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */,
 				84B413F11DCABA4A00D125E9 /* GameCamera.swift in Sources */,
 				84A7FE651DC75A7E00639570 /* Label.swift in Sources */,
 				84AA93801DC9802400A08593 /* Button.swift in Sources */,
+				844FEC241DE47C6E006EC500 /* Spell.swift in Sources */,
 				8475701D1DD4A9D50023DAA7 /* Box.swift in Sources */,
 				84B414141DCAC5A900D125E9 /* SKTTimingFunctions.swift in Sources */,
 				84B414101DCAC5A900D125E9 /* SKTAudio.swift in Sources */,
@@ -695,6 +715,7 @@
 				848DF3411DC38D1000D9BC7A /* MainMenuScene.swift in Sources */,
 				84B414051DCAC5A900D125E9 /* CGVector+Extensions.swift in Sources */,
 				84A7FE631DC7527900639570 /* GameColors.swift in Sources */,
+				847AF8D91DE1465300A63391 /* Skill.swift in Sources */,
 				84B4140F1DCAC5A900D125E9 /* SKNode+Extensions.swift in Sources */,
 				84A419E11DC985EA0090BC41 /* LoadScene.swift in Sources */,
 				84AC31DA1DC3864D00F0C6E1 /* AppDelegate.swift in Sources */,
@@ -702,6 +723,7 @@
 				847FEA7B1DCEAA3400C72D34 /* Player.swift in Sources */,
 				84B413EF1DCABA3500D125E9 /* GameWorld.swift in Sources */,
 				84B414131DCAC5A900D125E9 /* SKTEffects.swift in Sources */,
+				842F24591DE3250D00FFD89E /* SkillButton.swift in Sources */,
 				847F67001DCA6B0100E8389D /* MapManager.swift in Sources */,
 				84B4140D1DCAC5A900D125E9 /* SKColor+Extensions.swift in Sources */,
 				845514D91DCA3A4100B3C3CF /* MissionScene.swift in Sources */,
@@ -712,9 +734,11 @@
 				84240ADE1DCEBD4A00858870 /* GameMath.swift in Sources */,
 				844E07641DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */,
 				84B414031DCAC5A900D125E9 /* CGPoint+Extensions.swift in Sources */,
+				847AF8D61DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */,
 				84B413F21DCABA4A00D125E9 /* GameCamera.swift in Sources */,
 				84A7FE681DC75A7E00639570 /* Label.swift in Sources */,
 				84AA93831DC9802400A08593 /* Button.swift in Sources */,
+				844FEC251DE47C6E006EC500 /* Spell.swift in Sources */,
 				8475701E1DD4A9D50023DAA7 /* Box.swift in Sources */,
 				84B414151DCAC5A900D125E9 /* SKTTimingFunctions.swift in Sources */,
 				84B414111DCAC5A900D125E9 /* SKTAudio.swift in Sources */,

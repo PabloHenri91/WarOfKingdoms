@@ -10,13 +10,13 @@ import SpriteKit
 
 class LoadScene: GameScene {
     
-    enum states: String {
+    enum state: String {
         case load
         case mainMenu
     }
     
-    var state: states = .load
-    var nextState: states = .load
+    var state: state = .load
+    var nextState: state = .load
     
     override func load() {
         super.load()
@@ -35,7 +35,7 @@ class LoadScene: GameScene {
         
         if self.state == self.nextState {
             
-            switch state {
+            switch self.state {
                 
             case .load:
                 self.nextState = .mainMenu

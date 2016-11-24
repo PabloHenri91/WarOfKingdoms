@@ -10,13 +10,13 @@ import SpriteKit
 
 class MainMenuScene: GameScene {
     
-    enum states: String {
+    enum state: String {
         case mainMenu
         case mission
     }
     
-    var state: states = .mainMenu
-    var nextState: states = .mainMenu
+    var state: state = .mainMenu
+    var nextState: state = .mainMenu
     
     
     var buttonPlay: Button!
@@ -32,7 +32,7 @@ class MainMenuScene: GameScene {
         
         self.addChild(self.buttonPlay)
         
-        self.buttonPlay.event = { [weak self] in
+        self.buttonPlay.touchUpEvent = { [weak self] in
             guard let scene = self else { return }
             if scene.nextState == .mainMenu {
                 scene.nextState = .mission
