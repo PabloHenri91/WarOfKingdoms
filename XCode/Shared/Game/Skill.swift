@@ -17,30 +17,22 @@ class Skill {
         case key2 = 20
     }
     
-    var position = CGPoint.zero
+    weak var caster: Character?
     
     var type: SkillType
     
-    init(type: SkillType) {
+    init(caster: Character, type: SkillType) {
+        self.caster = caster
         self.type = type
     }
     
-    func keyDown(caster: Player?, target: Player?) {
-        
-    }
-    
-    func prepare(position: CGPoint) {
-        self.position = position
-        print("prepare \(self.position)")
-    }
-    
-    func move(position: CGPoint) {
-        self.position = position
-        print("move \(self.position)")
-    }
-    
     func activate() {
-        print("activate \(self.position)")
+        //guard let caster = caster else { return }
+        print("activate \(self.type.name)")
+    }
+    
+    func update() {
+        
     }
     
     func cancel() {
@@ -80,11 +72,11 @@ extension Skill {
         case onWeapon
     }
     
-    static func getType(typeName: typeName) -> SkillType {
-        return Skill.types[typeName]!
+    static func getType(name: Skill.typeName) -> SkillType {
+        return Skill.types[name]!
     }
     
-    static var types = Skill.loadTypes()
+    private static var types = Skill.loadTypes()
     
     private static func loadTypes() -> [typeName: SkillType] {
         

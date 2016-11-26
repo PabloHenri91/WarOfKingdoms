@@ -25,7 +25,7 @@ class MissionScene: GameScene {
         
         self.mapManager = MapManager()
         
-        self.player = Player()
+        self.player = Player(level: 1, xp: 0)
         
         
         self.addChild(self.gameWorld)
@@ -112,17 +112,13 @@ class MissionScene: GameScene {
             break
             
         default:
-            print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
+            //print("keyDown: \(event.characters!) keyCode: \(event.keyCode)")
             break
         }
     }
     
     override func keyUp(with event: NSEvent) {
         switch event.keyCode {
-            
-        case 18, 19, 20, 21, 23, 22, 26, 28, 25, 29:
-            self.player.hud.boxPlayerSkills.keyUp(skillKeyCode: Skill.keyCode(rawValue: event.keyCode))
-            break
             
         case 0, 123: // a, ⬅️
             self.player.moveA = false
@@ -141,7 +137,7 @@ class MissionScene: GameScene {
             break
             
         default:
-            print("keyUp: \(event.characters!) keyCode: \(event.keyCode)")
+            //print("keyUp: \(event.characters!) keyCode: \(event.keyCode)")
             break
         }
     }

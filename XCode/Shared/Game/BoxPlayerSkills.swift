@@ -34,7 +34,16 @@ class BoxPlayerSkills: Control {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func keyDown(skillKeyCode: Skill.keyCode?, caster: Player?, target: Player?) {
+    func loadSkills(skills: [Skill?]) {
+        
+        var i = skills.makeIterator()
+        
+        for skillButton in self.skillButtons {
+            skillButton.skill = i.next() ?? nil
+        }
+    }
+    
+    func keyDown(skillKeyCode: Skill.keyCode?) {
         
         var keyIndex: Int?
         
@@ -53,14 +62,9 @@ class BoxPlayerSkills: Control {
             
             if let keyIndex = keyIndex {
                 if keyIndex < self.skillButtons.count {
-                    self.skillButtons[keyIndex].skill?.keyDown(caster: caster, target: target)
+                    self.skillButtons[keyIndex].skill?.activate()
                 }
             }
         }
     }
-    
-    func keyUp(skillKeyCode: Skill.keyCode?) {
-        
-    }
-    
 }
