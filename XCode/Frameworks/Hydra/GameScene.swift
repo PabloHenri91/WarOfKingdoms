@@ -19,7 +19,11 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    static var currentGameScene: GameScene!
+    static func current() -> GameScene? {
+        return GameScene.lastInstance
+    }
+    private static weak var lastInstance: GameScene? = nil
+    
     static var currentTime: TimeInterval = 0
     
     static let defaultTransition = SKTransition.crossFade(withDuration: 0.25)
@@ -42,7 +46,10 @@ class GameScene: SKScene {
         self.anchorPoint = CGPoint(x: 0, y: 1)
         self.backgroundColor = GameColors.background
         
-        GameScene.currentGameScene = self
+        GameScene.lastInstance = self
+        
+        Character.set = Set<Character>()
+        Monster.monsterSet = Set<Monster>()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -98,19 +105,19 @@ class GameScene: SKScene {
     #if os(iOS) || os(tvOS)
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchDown(touch: t) }
+        for t in touches { self.touchDown(touch: t) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchMoved(touch: t) }
+        for t in touches { self.touchMoved(touch: t) }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchUp(touch: t) }
+        for t in touches { self.touchUp(touch: t) }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { touchUp(touch: t) }
+        for t in touches { self.touchUp(touch: t) }
     }
     
     #endif
@@ -145,7 +152,7 @@ extension UITouch {
     var delta: CGPoint {
         get {
             #if os(iOS)
-                return self.previousLocation(in: GameScene.currentGameScene) - self.location(in: GameScene.currentGameScene)
+                return self.previousLocation(in: GameScene.current()!) - self.location(in: GameScene.current()!)
                 #endif
             
             #if os(OSX)

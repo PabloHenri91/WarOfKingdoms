@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84116A7B1DE9FA8E00C9D489 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84116A7A1DE9FA8E00C9D489 /* Monster.swift */; };
+		84116A7C1DE9FA8E00C9D489 /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84116A7A1DE9FA8E00C9D489 /* Monster.swift */; };
 		841CC8B51DCFA04100D879FD /* kenpixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 841CC8B41DCFA04100D879FD /* kenpixel.ttf */; };
 		841CC8B61DCFA04100D879FD /* kenpixel.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 841CC8B41DCFA04100D879FD /* kenpixel.ttf */; };
 		84240ADD1DCEBD4A00858870 /* GameMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84240ADC1DCEBD4A00858870 /* GameMath.swift */; };
@@ -149,6 +151,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		84116A7A1DE9FA8E00C9D489 /* Monster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		841CC8B41DCFA04100D879FD /* kenpixel.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = kenpixel.ttf; sourceTree = "<group>"; };
 		84240ADC1DCEBD4A00858870 /* GameMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMath.swift; sourceTree = "<group>"; };
 		842F24571DE3250D00FFD89E /* SkillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillButton.swift; sourceTree = "<group>"; };
@@ -296,6 +299,7 @@
 				844FEC231DE47C6E006EC500 /* Spell.swift */,
 				847F67041DCA6B6F00E8389D /* Tile.swift */,
 				848F0BC81DCE210300F9D547 /* Tileset.swift */,
+				84116A7A1DE9FA8E00C9D489 /* Monster.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -540,7 +544,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = PabloHenri91;
 				TargetAttributes = {
 					84AC319D1DC3864D00F0C6E1 = {
@@ -675,6 +679,7 @@
 				848DF32E1DC38CEA00D9BC7A /* Control.swift in Sources */,
 				84240ADD1DCEBD4A00858870 /* GameMath.swift in Sources */,
 				844E07631DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */,
+				84116A7B1DE9FA8E00C9D489 /* Monster.swift in Sources */,
 				84B414021DCAC5A900D125E9 /* CGPoint+Extensions.swift in Sources */,
 				847AF8D51DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */,
 				84B413F11DCABA4A00D125E9 /* GameCamera.swift in Sources */,
@@ -738,6 +743,7 @@
 				848DF3311DC38CEA00D9BC7A /* Control.swift in Sources */,
 				84240ADE1DCEBD4A00858870 /* GameMath.swift in Sources */,
 				844E07641DCF74BC00CDD1FE /* PlayerHUD.swift in Sources */,
+				84116A7C1DE9FA8E00C9D489 /* Monster.swift in Sources */,
 				84B414031DCAC5A900D125E9 /* CGPoint+Extensions.swift in Sources */,
 				847AF8D61DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */,
 				84B413F21DCABA4A00D125E9 /* GameCamera.swift in Sources */,
@@ -831,6 +837,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -879,6 +886,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

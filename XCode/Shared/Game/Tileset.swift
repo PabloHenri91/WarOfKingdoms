@@ -8,22 +8,53 @@
 
 import SpriteKit
 
-class Tileset {
+class Tileset: SKSpriteNode {
     
-    var firstgid: Int = 0
-    var name: String = ""
-    var tilewidth: CGFloat = 0
-    var tileheight: CGFloat = 0
-    var tilecount: Int = 0
-    var columns: Int = 0
+    private var tilewidth: CGFloat = 0
+    private var tileheight: CGFloat = 0
+    private var columns: Int = 0
+    private var rows: Int = 0
+    private var tilecount: Int = 0
     
     var tileTextures = [SKTexture]()
     
-    func load() {
-        
-        let texture = SKTexture(imageNamed: self.name)
+    init(imageNamed name: String) {
+        let texture = SKTexture(imageNamed: name)
         texture.filteringMode = GameScene.defaultFilteringMode
-        let size = texture.size()
+        
+        
+        super.init(texture: texture, color: SKColor.white, size: texture.size())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func load(tilewidth: Int, tileheight: Int) {
+        self.tilewidth = CGFloat(tilewidth)
+        self.tileheight = CGFloat(tileheight)
+        
+        self.columns = Int(self.size.width / self.tilewidth)
+        self.rows = Int(self.size.height / self.tileheight)
+        
+        self.tilecount = self.columns * self.rows
+        
+        self.load()
+    }
+    
+    func load(columns: Int, rows: Int) {
+        self.columns = columns
+        self.rows = rows
+        
+        self.tilewidth = self.size.width / CGFloat(columns)
+        self.tileheight = self.size.height / CGFloat(rows)
+        
+        self.tilecount = self.columns * self.rows
+        
+        self.load()
+    }
+    
+    private func load() {
         
         var column: CGFloat = 0
         var row: CGFloat = 1
@@ -39,7 +70,7 @@ class Tileset {
                 origin: CGPoint(x: (tilewidth * column)/size.width, y: (size.height - (tileheight * row))/size.height),
                 size: CGSize(width: tilewidth/size.width, height: tileheight/size.height))
             
-            let tileTexture = SKTexture(rect: rect, in: texture)
+            let tileTexture = SKTexture(rect: rect, in: self.texture!)
             tileTexture.filteringMode = GameScene.defaultFilteringMode
             
             self.tileTextures.append(tileTexture)

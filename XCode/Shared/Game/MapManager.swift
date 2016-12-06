@@ -50,6 +50,16 @@ class MapManager: SKNode {
                     self.loadMap()
                     self.loading = false
                     self.lastUpdate = GameScene.currentTime
+                } else {
+                    for chunk in self.chunks {
+                        for monster in chunk.monsters {
+                            if monster.health <= 0 {
+                                if GameScene.currentTime - monster.deathTime > 3.0 {
+                                    monster.respawn()
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

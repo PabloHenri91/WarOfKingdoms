@@ -33,6 +33,10 @@ class Chunk: SKNode, XMLParserDelegate {
     
     var tilesets = [Tileset]()
     
+    
+    //Objects
+    var monsters = [Monster]()
+    
     init(x: Int, y: Int) {
         
         super.init()
@@ -41,7 +45,6 @@ class Chunk: SKNode, XMLParserDelegate {
         
         self.position = CGPoint(x: x * Int(Chunk.size.width),
                                 y: y * Int(Chunk.size.height))
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -66,17 +69,16 @@ class Chunk: SKNode, XMLParserDelegate {
                     if id != 0 {
                         switch(id) {
                         default:
-                            
                             var tilecount = 0
                             
                             for tileset in self.tilesets {
                                 
                                 let lastTilecount = tilecount
-                                tilecount = tilecount + tileset.tilecount
+                                tilecount = tilecount + tileset.tileTextures.count
                                 
                                 if id > lastTilecount && id <= tilecount {
                                     let texture = tileset.tileTextures[id - lastTilecount - 1]
-                                    self.addChild(Tile(texture: texture, x: x, y: y, loadPhysics: loadPhysics))
+                                    self.addChild(Tile(texture: texture, x: x, y: y, loadPhysics: loadPhysics, zPosition: Chunk.layersZPosition))
                                     break
                                 }
                             }
@@ -99,14 +101,14 @@ class Chunk: SKNode, XMLParserDelegate {
             Chunk.tileheight = CGFloat(Int(attributeDict["tileheight"]!)!)
             break
         case "tileset":
-            let tileset = Tileset()
-            tileset.firstgid = Int(attributeDict["firstgid"]!)!
-            tileset.name = (attributeDict["name"]!)
-            tileset.tilewidth = CGFloat(Int(attributeDict["tilewidth"]!)!)
-            tileset.tileheight = CGFloat(Int(attributeDict["tileheight"]!)!)
-            tileset.tilecount = Int(attributeDict["tilecount"]!)!
-            tileset.columns = Int(attributeDict["columns"]!)!
-            tileset.load()
+            
+            let name = (attributeDict["name"]!)
+            let tilewidth = Int(attributeDict["tilewidth"]!)!
+            let tileheight = Int(attributeDict["tileheight"]!)!
+            
+            let tileset = Tileset(imageNamed: name)
+            tileset.load(tilewidth: tilewidth, tileheight: tileheight)
+            
             self.tilesets.append(tileset)
             break
         case "image":
@@ -122,16 +124,72 @@ class Chunk: SKNode, XMLParserDelegate {
             break
         case "data":
             break
+        case "object":
+            
+            let height = Int(attributeDict["height"]!)!
+            let name = attributeDict["name"]!
+            let id = Int(attributeDict["id"]!)!
+            let width = Int(attributeDict["width"]!)!
+            let x = Int(attributeDict["x"]!)!
+            let type = attributeDict["type"]!
+            let y = Int(attributeDict["y"]!)!
+            
+            var character: Character? = nil
+            
+            switch type {
+                
+            case "Monster":
+                if let monstertype = Monster.typeName(rawValue: name) {
+                    character = Monster(typeName: monstertype)
+                } else {
+                    character = Monster(typeName: Monster.getType().name)
+                }
+                self.monsters.append(character as! Monster)
+                break
+            default:
+                print("Tipo de objeto desconhecido: \(type)")
+                break
+            }
+            
+            if let character = character {
+                character.position
+                    = CGPoint(x: x, y: -y)
+                    + CGPoint(x: -Chunk.size.width/2, y: Chunk.size.height/2)
+                    + CGPoint(x: width/2, y: height/2)
+                
+                if let gameWorld = GameWorld.current() {
+                    character.zPosition = GameWorld.zPosition.character.rawValue
+                    gameWorld.addChild(character)
+                    self.convert(character.position, to: gameWorld)
+                }
+                
+                
+                switch character {
+                case is Monster:
+                    if let monster = character as? Monster {
+                        monster.spawnPoint = monster.position
+                    }
+                    break
+                default:
+                    break
+                }
+            }
+            
+            break
         default:
+            //print("elementName: \(elementName)")
+            //print("attributeDict: \(attributeDict)\n")
             break
         }
     }
     
+    private static var layersZPosition: CGFloat = 0
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         
         let string = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if string.isEmpty == false {
             self.loadLayer(data: string.components(separatedBy: ","), loadPhysics: self.layerName == layerName.walls.rawValue)
+            Chunk.layersZPosition = Chunk.layersZPosition + 1
         }
     }
     

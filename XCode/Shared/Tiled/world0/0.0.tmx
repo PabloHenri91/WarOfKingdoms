@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="32" tileheight="32" nextobjectid="23">
  <tileset firstgid="1" name="fireCave" tilewidth="32" tileheight="32" tilecount="308" columns="28">
   <image source="../tilesets/fireCave.png" trans="3c3c3c" width="896" height="352"/>
   <terraintypes>
@@ -327,4 +327,25 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup name="Objects">
+  <object id="2" type="Monster" x="1408" y="992" width="32" height="32"/>
+  <object id="5" type="Monster" x="896" y="992" width="32" height="32"/>
+  <object id="6" type="Monster" x="544" y="1184" width="32" height="32"/>
+  <object id="7" type="Monster" x="928" y="1344" width="32" height="32"/>
+  <object id="8" type="Monster" x="256" y="1504" width="32" height="32"/>
+  <object id="9" type="Monster" x="704" y="1632" width="32" height="32"/>
+  <object id="10" type="Monster" x="1600" y="1344" width="32" height="32"/>
+  <object id="11" type="Monster" x="1728" y="416" width="32" height="32"/>
+  <object id="12" type="Monster" x="1248" y="224" width="32" height="32"/>
+  <object id="13" type="Monster" x="224" y="192" width="32" height="32"/>
+  <object id="14" type="Monster" x="544" y="384" width="32" height="32"/>
+  <object id="15" type="Monster" x="928" y="544" width="32" height="32"/>
+  <object id="16" type="Monster" x="672" y="832" width="32" height="32"/>
+  <object id="17" type="Monster" x="1248" y="1152" width="32" height="32"/>
+  <object id="18" type="Monster" x="1184" y="736" width="32" height="32"/>
+  <object id="19" type="Monster" x="1472" y="1568" width="32" height="32"/>
+  <object id="20" type="Monster" x="1696" y="640" width="32" height="32"/>
+  <object id="21" type="Monster" x="1728" y="1824" width="32" height="32"/>
+  <object id="22" type="Monster" x="640" y="1888" width="32" height="32"/>
+ </objectgroup>
 </map>

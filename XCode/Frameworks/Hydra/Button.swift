@@ -64,6 +64,26 @@ class Button: Control {
         }
     }
     
+    #if os(iOS) || os(tvOS)
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchDown(touch: t) }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchMoved(touch: t) }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(touch: t) }
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for t in touches { self.touchUp(touch: t) }
+    }
+    
+    #endif
+    
     #if os(OSX)
     
     override func mouseDown(with event: UITouch) {

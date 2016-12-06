@@ -10,6 +10,8 @@ import SpriteKit
 
 class Character: SKSpriteNode {
     
+    static var set = Set<Character>()
+    
     var level = 1
     
     // Movement
@@ -28,6 +30,8 @@ class Character: SKSpriteNode {
     }
     
     var lastMove: moveType = .moveS
+    
+    var destination: CGPoint? = nil
     
     // Controls
     var moveA = false
@@ -50,8 +54,13 @@ class Character: SKSpriteNode {
     var target: Player?
     var skills = [Skill?](repeating: nil, count: 3)
     
+    // Attributes
     
-    init() {
+    var health = 3
+    var maxHealth = 3
+    
+    
+    init(textureName: String = "charaTeste") {
         
         let texture = SKTexture(imageNamed: "boxWhite32x32")
         texture.filteringMode = GameScene.defaultFilteringMode
@@ -60,9 +69,11 @@ class Character: SKSpriteNode {
         
         self.position = CGPoint(x: Chunk.tilewidth/2, y: Chunk.tileheight/2)
         
+        self.zPosition = 5
+        
         self.loadPhysics()
         
-        self.loadTextures()//(name: "charaTeste")
+        self.loadTextures(name: textureName)
         self.loadActions()
     }
     
@@ -70,23 +81,30 @@ class Character: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func update() {
+        
+    }
+    
     func loadPhysics() {
         
         var transform = CGAffineTransform(rotationAngle: π/4)
         
-        let physicsBody = SKPhysicsBody(polygonFrom: CGPath(rect: CGRect(x: -self.size.width/2, y: -self.size.height/2, width: self.size.width, height: self.size.height), transform: &transform))
+        let physicsBody = SKPhysicsBody(polygonFrom: CGPath(rect: CGRect(x: -Chunk.tilewidth/2, y: -Chunk.tileheight/2, width: Chunk.tilewidth, height: Chunk.tileheight), transform: &transform))
         
         physicsBody.usesPreciseCollisionDetection = false
+        physicsBody.categoryBitMask = UInt32.max
         physicsBody.collisionBitMask = 0
+        physicsBody.contactTestBitMask = UInt32.max
         physicsBody.affectedByGravity = false
         physicsBody.isDynamic = true
+        physicsBody.allowsRotation = false
         
         self.physicsBody = physicsBody
     }
     
     func loadActions() {
         
-        let speed: Double = 64
+        let speed: Double = 128
         let distance: Double = Double(Chunk.tilewidth)
         
         let moveActionDuration: TimeInterval = distance/speed
@@ -144,7 +162,7 @@ class Character: SKSpriteNode {
             ])
     }
     
-    func loadTextures(name: String = "chara\(1 + Int.random(8))\(1 + Int.random(8))") {
+    func loadTextures(name: String) {
         
         self.texturesA = [SKTexture]()
         self.texturesS = [SKTexture]()
@@ -156,19 +174,15 @@ class Character: SKSpriteNode {
         self.texturesMoveD = [SKTexture]()
         self.texturesMoveW = [SKTexture]()
         
-        let tileset = Tileset()
-        tileset.tilewidth = 26
-        tileset.tileheight = 36
-        tileset.columns = 3
-        tileset.tilecount = 12
+        let tileset = Tileset(imageNamed: name)
         
         tileset.name = name
-        tileset.load()
+        tileset.load(columns: 3, rows: 4)
         
         self.texture = tileset.tileTextures[1] // S
         self.size = self.texture!.size()
         
-        self.anchorPoint.y = 1 - (self.size.height/32)/2
+        self.anchorPoint.y = 0.5 - 0.5 * (self.size.height - 32)/self.size.height
         
         self.texturesA.append(tileset.tileTextures[4])
         self.texturesS.append(tileset.tileTextures[1])

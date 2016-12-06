@@ -9,6 +9,11 @@
 import SpriteKit
 
 class MissionScene: GameScene {
+    
+    enum zPosition: CGFloat {
+        case gameWorld = 0
+        case playerHUD = 100
+    }
 
     var gameWorld: GameWorld!
     var gameCamera: GameCamera!
@@ -29,6 +34,7 @@ class MissionScene: GameScene {
         
         
         self.addChild(self.gameWorld)
+        self.gameWorld.zPosition = zPosition.gameWorld.rawValue
         self.gameWorld.addChild(self.gameCamera)
         self.gameCamera.node = self.player
         self.gameCamera.update()
@@ -37,7 +43,10 @@ class MissionScene: GameScene {
         self.gameWorld.addChild(self.mapManager)
         
         self.gameWorld.addChild(self.player)
+        self.player.zPosition = GameWorld.zPosition.player.rawValue
         self.addChild(self.player.hud)
+        self.player.hud.zPosition = MissionScene.zPosition.playerHUD.rawValue
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -46,6 +55,9 @@ class MissionScene: GameScene {
         self.mapManager.update(position: self.player.position)
         
         self.player.update()
+        
+        Monster.update()
+        
     }
     
     override func didFinishUpdate() {
@@ -54,12 +66,24 @@ class MissionScene: GameScene {
         self.gameCamera.update()
     }
     
+    override func touchDown(touch: UITouch) {
+        self.player.touchDown(touch: touch)
+        
+        for monster in Monster.monsterSet {
+            monster.touchDown(touch: touch)
+        }
+    }
+    
     override func touchMoved(touch: UITouch) {
         super.touchMoved(touch: touch)
         
         if self.gameCamera.node == nil {
             self.gameCamera.position = self.gameCamera.position + touch.delta
         }
+    }
+    
+    override func touchUp(touch: UITouch) {
+        
     }
     
     #if os(OSX)
@@ -79,8 +103,8 @@ class MissionScene: GameScene {
             break
             
         case 14: // e
-            self.player.loadTextures()
-            self.player.loadActions()
+            //self.player.loadTextures(name: "monster_wolf1")
+            //self.player.loadActions()
             break
             
         case 16: // y
@@ -97,18 +121,22 @@ class MissionScene: GameScene {
             
         case 0, 123: // a, ⬅️
             self.player.moveA = true
+            self.player.destination = nil
             break
             
         case 1, 125: // s, ⬇️
             self.player.moveS = true
+            self.player.destination = nil
             break
             
         case 2, 124: // d, ➡️
             self.player.moveD = true
+            self.player.destination = nil
             break
             
         case 13, 126: // w, ⬆️
             self.player.moveW = true
+            self.player.destination = nil
             break
             
         default:
