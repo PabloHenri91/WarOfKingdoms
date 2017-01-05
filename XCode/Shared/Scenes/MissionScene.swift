@@ -67,15 +67,16 @@ class MissionScene: GameScene {
     }
     
     override func touchDown(touch: UITouch) {
-        self.player.touchDown(touch: touch)
         
-        for monster in Monster.monsterSet {
-            monster.touchDown(touch: touch)
+        if let monster = Monster.touchDown(touch: touch) {
+            self.player.target = monster
+        } else {
+            self.player.touchDown(touch: touch)
         }
+        
     }
     
     override func touchMoved(touch: UITouch) {
-        super.touchMoved(touch: touch)
         
         if self.gameCamera.node == nil {
             self.gameCamera.position = self.gameCamera.position + touch.delta

@@ -22,6 +22,8 @@ class GameViewController: UIViewController {
         // Present the scene
         let skView = self.view as! SKView
         skView.presentScene(scene)
+        
+        self.view.isUserInteractionEnabled = false
     }
     
     override func didReceiveMemoryWarning() {

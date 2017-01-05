@@ -51,7 +51,7 @@ class Character: SKSpriteNode {
     var texturesMoveW = [SKTexture]()
     
     // Skills
-    var target: Player?
+    var target: Character?
     var skills = [Skill?](repeating: nil, count: 3)
     
     // Attributes

@@ -12,7 +12,6 @@ class Monster: Character {
     
     static var monsterSet = Set<Monster>()
     
-    
     // respawn
     var deathTime: TimeInterval = 0
     var spawnPoint = CGPoint.zero
@@ -28,12 +27,6 @@ class Monster: Character {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    static func update() {
-        for monster in Monster.monsterSet {
-            monster.update()
-        }
     }
     
     override func update() {
@@ -106,19 +99,61 @@ class Monster: Character {
         self.position = self.spawnPoint
     }
     
-    func touchDown(touch: UITouch) {
-        if let parent = self.parent {
-            if self.contains(touch.location(in: parent)) {
-                self.takeDamage(damage: 1)
-            }
-        }
-    }
-    
     override func removeFromParent() {
         super.removeFromParent()
         Monster.monsterSet.remove(self)
     }
-
+    
+    static func update() {
+        for monster in Monster.monsterSet {
+            monster.update()
+        }
+    }
+    
+    static func touchDown(touch: UITouch) -> Monster? {
+        
+        if let monster = Monster.nearestMonster(monsters: [Monster](Monster.monsterSet), touch: touch) {
+            monster.takeDamage(damage: 1)
+            return monster
+        }
+        return nil
+    }
+    
+    static func nearestMonster(monsters: [Monster], touch: UITouch) -> Monster? {
+        
+        var monstersAtPoint = [Monster]()
+        
+        for monster in monsters {
+            if monster.health > 0 {
+                if let parent = monster.parent {
+                    if monster.contains(touch.location(in: parent)) {
+                        monstersAtPoint.append(monster)
+                    }
+                }
+            }
+        }
+        
+        var nearestMonster: Monster? = nil
+        
+        for monster in monstersAtPoint {
+            
+            if let parent = monster.parent {
+                
+                let touchPosition = touch.location(in: parent)
+                
+                if nearestMonster != nil {
+                    if (touchPosition - monster.position).lengthSquared() < (touchPosition - nearestMonster!.position).lengthSquared() {
+                        nearestMonster = monster
+                    }
+                } else {
+                    nearestMonster = monster
+                }
+            }
+        }
+        
+        return nearestMonster
+    }
+    
 }
 
 class MonsterType {
@@ -154,7 +189,7 @@ extension Monster {
         case monster_wolf2
     }
     
-    static func getType() -> MonsterType {
+    static func getRandomType() -> MonsterType {
         return [MonsterType](Monster.types.values)[Int.random(Monster.types.count)]
     }
     

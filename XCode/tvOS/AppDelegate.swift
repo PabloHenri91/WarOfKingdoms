@@ -41,6 +41,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        GameScene.current()?.touchesBegan(touches, with: event)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        GameScene.current()?.touchesMoved(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        GameScene.current()?.touchesEnded(touches, with: event)
+    }
 
 }
 

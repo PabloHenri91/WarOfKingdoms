@@ -45,16 +45,16 @@ class Tile: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    static func position(x: Int, y: Int) -> CGPoint {
-        return CGPoint(x: x * Int(Chunk.tilewidth) - Int(Chunk.size.width)/2 + Int(Chunk.tilewidth/2),
-                       y: -y * Int(Chunk.tileheight) + Int(Chunk.size.height)/2 - Int(Chunk.tileheight/2))
-    }
-    
     func loadPhysics() {
         let physicsBody = SKPhysicsBody(rectangleOf: self.size)
         physicsBody.usesPreciseCollisionDetection = false
         physicsBody.isDynamic = false
         
         self.physicsBody = physicsBody
+    }
+    
+    static func position(x: Int, y: Int) -> CGPoint {
+        return CGPoint(x: x * Int(Chunk.tilewidth) - Int(Chunk.size.width)/2 + Int(Chunk.tilewidth/2),
+                       y: -y * Int(Chunk.tileheight) + Int(Chunk.size.height)/2 - Int(Chunk.tileheight/2))
     }
 }

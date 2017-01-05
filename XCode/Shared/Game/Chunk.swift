@@ -78,7 +78,7 @@ class Chunk: SKNode, XMLParserDelegate {
                                 
                                 if id > lastTilecount && id <= tilecount {
                                     let texture = tileset.tileTextures[id - lastTilecount - 1]
-                                    self.addChild(Tile(texture: texture, x: x, y: y, loadPhysics: loadPhysics, zPosition: Chunk.layersZPosition))
+                                    self.addChild(Tile(texture: texture, x: x, y: y, loadPhysics: loadPhysics, zPosition: self.layersZPosition))
                                     break
                                 }
                             }
@@ -127,7 +127,7 @@ class Chunk: SKNode, XMLParserDelegate {
         case "object":
             
             let height = Int(attributeDict["height"]!)!
-            let name = attributeDict["name"]!
+            let name = attributeDict["name"] ?? ""
             let id = Int(attributeDict["id"]!)!
             let width = Int(attributeDict["width"]!)!
             let x = Int(attributeDict["x"]!)!
@@ -142,7 +142,7 @@ class Chunk: SKNode, XMLParserDelegate {
                 if let monstertype = Monster.typeName(rawValue: name) {
                     character = Monster(typeName: monstertype)
                 } else {
-                    character = Monster(typeName: Monster.getType().name)
+                    character = Monster(typeName: Monster.getRandomType().name)
                 }
                 self.monsters.append(character as! Monster)
                 break
@@ -183,13 +183,13 @@ class Chunk: SKNode, XMLParserDelegate {
         }
     }
     
-    private static var layersZPosition: CGFloat = 0
+    private var layersZPosition: CGFloat = 0
     func parser(_ parser: XMLParser, foundCharacters string: String) {
         
         let string = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if string.isEmpty == false {
             self.loadLayer(data: string.components(separatedBy: ","), loadPhysics: self.layerName == layerName.walls.rawValue)
-            Chunk.layersZPosition = Chunk.layersZPosition + 1
+            self.layersZPosition = self.layersZPosition + 1
         }
     }
     
