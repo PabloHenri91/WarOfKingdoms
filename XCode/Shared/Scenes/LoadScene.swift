@@ -18,6 +18,18 @@ class LoadScene: GameScene {
     var state: state = .load
     var nextState: state = .load
     
+    init() {
+        GameScene.defaultSize = CGSize(width: 568, height: 320)
+        
+        GameScene.defaultFilteringMode = .nearest
+        
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func load() {
         super.load()
         

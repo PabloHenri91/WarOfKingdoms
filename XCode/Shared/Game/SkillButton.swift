@@ -12,11 +12,11 @@ class SkillButton: Button {
     
     weak var skill: Skill?
     
-    override init(imageNamed name: String, x: CGFloat, y: CGFloat,
+    init(x: CGFloat, y: CGFloat,
          horizontalAlignment: horizontalAlignment = .left,
          verticalAlignment: verticalAlignment = .top) {
         
-        super.init(imageNamed: name, x: x, y: y, horizontalAlignment: horizontalAlignment, verticalAlignment: verticalAlignment)
+        super.init(imageNamed: "boxWhite34x34", x: x, y: y, horizontalAlignment: horizontalAlignment, verticalAlignment: verticalAlignment)
         
         self.touchUpEvent = { [weak self] in
             guard let skillButton = self else { return }

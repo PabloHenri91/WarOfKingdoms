@@ -10,25 +10,10 @@ import SpriteKit
 
 class BoxPlayerXP: Button {
     
-    var text: String {
-        get {
-            return self.label.text
-        }
-        set {
-            self.label.text = newValue
-        }
-    }
-    
-    private var label: Label
-    
     init() {
-        
-        self.label = Label(text: "?/?", fontSize: .fontSize8, x: 72, y: 7)
-        
-        //boxWhite144x21
         super.init(imageNamed: "boxWhite144x13", x: 3, y: 37, horizontalAlignment: .left, verticalAlignment: .top)
         
-        self.addChild(self.label)
+        self.label.fontSize = .fontSize8
         
         self.touchUpEvent = { [weak self] in
             guard let boxPlayerXP = self else { return }

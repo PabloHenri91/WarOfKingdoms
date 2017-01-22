@@ -16,13 +16,13 @@ class BoxPlayerSkills: Control {
         
         super.init(x: 0, y: 0)
         
-        let button1 = SkillButton(imageNamed: "boxWhite34x34", x: 230, y: 283, horizontalAlignment: .center, verticalAlignment: .bottom)
+        let button1 = SkillButton(x: 230, y: 283, horizontalAlignment: .center, verticalAlignment: .bottom)
         self.skillButtons.append(button1)
         
-        let button2 = SkillButton(imageNamed: "boxWhite34x34", x: 267, y: 283, horizontalAlignment: .center, verticalAlignment: .bottom)
+        let button2 = SkillButton(x: 267, y: 283, horizontalAlignment: .center, verticalAlignment: .bottom)
         self.skillButtons.append(button2)
         
-        let button3 = SkillButton(imageNamed: "boxWhite34x34", x: 304, y: 283, horizontalAlignment: .center, verticalAlignment: .bottom)
+        let button3 = SkillButton(x: 304, y: 283, horizontalAlignment: .center, verticalAlignment: .bottom)
         self.skillButtons.append(button3)
         
         for button in self.skillButtons {

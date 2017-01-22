@@ -88,6 +88,9 @@
 		84AC31EF1DC3864D00F0C6E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84AC31991DC3864D00F0C6E1 /* Assets.xcassets */; };
 		84B413EE1DCABA3500D125E9 /* GameWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B413ED1DCABA3500D125E9 /* GameWorld.swift */; };
 		84B413EF1DCABA3500D125E9 /* GameWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B413ED1DCABA3500D125E9 /* GameWorld.swift */; };
+		84C7140B1E1F113000D1125C /* BlackSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7140A1E1F113000D1125C /* BlackSpriteNode.swift */; };
+		84C7140C1E1F113000D1125C /* BlackSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7140A1E1F113000D1125C /* BlackSpriteNode.swift */; };
+		84C7140D1E1F113000D1125C /* BlackSpriteNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7140A1E1F113000D1125C /* BlackSpriteNode.swift */; };
 		84EE591D1E1EC8F1000DF7A1 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE59161E1EC8F1000DF7A1 /* Box.swift */; };
 		84EE591E1E1EC8F1000DF7A1 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE59161E1EC8F1000DF7A1 /* Box.swift */; };
 		84EE591F1E1EC8F1000DF7A1 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE59161E1EC8F1000DF7A1 /* Box.swift */; };
@@ -235,6 +238,7 @@
 		84AC31DE1DC3864D00F0C6E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84AC31E01DC3864D00F0C6E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84B413ED1DCABA3500D125E9 /* GameWorld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameWorld.swift; sourceTree = "<group>"; };
+		84C7140A1E1F113000D1125C /* BlackSpriteNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlackSpriteNode.swift; path = ../../../../Hydra/XCode/Frameworks/Hydra/BlackSpriteNode.swift; sourceTree = "<group>"; };
 		84EE59161E1EC8F1000DF7A1 /* Box.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Box.swift; path = ../../Hydra/XCode/Frameworks/Hydra/Box.swift; sourceTree = SOURCE_ROOT; };
 		84EE59171E1EC8F1000DF7A1 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = ../../Hydra/XCode/Frameworks/Hydra/Button.swift; sourceTree = SOURCE_ROOT; };
 		84EE59181E1EC8F1000DF7A1 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Control.swift; path = ../../Hydra/XCode/Frameworks/Hydra/Control.swift; sourceTree = SOURCE_ROOT; };
@@ -355,6 +359,7 @@
 		848DF32C1DC38CCD00D9BC7A /* Hydra */ = {
 			isa = PBXGroup;
 			children = (
+				84C7140A1E1F113000D1125C /* BlackSpriteNode.swift */,
 				84EE59161E1EC8F1000DF7A1 /* Box.swift */,
 				84EE59171E1EC8F1000DF7A1 /* Button.swift */,
 				84EE59181E1EC8F1000DF7A1 /* Control.swift */,
@@ -721,6 +726,7 @@
 				84EE59561E1EC910000DF7A1 /* SKTAudio.swift in Sources */,
 				84116A7B1DE9FA8E00C9D489 /* Monster.swift in Sources */,
 				84EE591D1E1EC8F1000DF7A1 /* Box.swift in Sources */,
+				84C7140B1E1F113000D1125C /* BlackSpriteNode.swift in Sources */,
 				84EE59471E1EC910000DF7A1 /* Int+Extensions.swift in Sources */,
 				84EE59441E1EC910000DF7A1 /* CGVector+Extensions.swift in Sources */,
 				847AF8D51DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */,
@@ -776,6 +782,7 @@
 				84EE59571E1EC910000DF7A1 /* SKTAudio.swift in Sources */,
 				84AC31CC1DC3864D00F0C6E1 /* AppDelegate.swift in Sources */,
 				84EE591E1E1EC8F1000DF7A1 /* Box.swift in Sources */,
+				84C7140C1E1F113000D1125C /* BlackSpriteNode.swift in Sources */,
 				84EE59481E1EC910000DF7A1 /* Int+Extensions.swift in Sources */,
 				84EE59451E1EC910000DF7A1 /* CGVector+Extensions.swift in Sources */,
 				8412D03C1DFA33B500442CFD /* Tileset.swift in Sources */,
@@ -822,6 +829,7 @@
 				84EE59581E1EC910000DF7A1 /* SKTAudio.swift in Sources */,
 				84116A7C1DE9FA8E00C9D489 /* Monster.swift in Sources */,
 				84EE591F1E1EC8F1000DF7A1 /* Box.swift in Sources */,
+				84C7140D1E1F113000D1125C /* BlackSpriteNode.swift in Sources */,
 				84EE59491E1EC910000DF7A1 /* Int+Extensions.swift in Sources */,
 				84EE59461E1EC910000DF7A1 /* CGVector+Extensions.swift in Sources */,
 				847AF8D61DE13D4200A63391 /* BoxPlayerSkills.swift in Sources */,
