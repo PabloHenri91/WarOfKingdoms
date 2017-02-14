@@ -13,9 +13,9 @@ class BoxPlayerXP: Button {
     init() {
         super.init(imageNamed: "boxWhite144x13", x: 3, y: 37, horizontalAlignment: .left, verticalAlignment: .top)
         
-        self.label.fontSize = .fontSize8
+        self.label?.fontSize = .fontSize8
         
-        self.touchUpEvent = { [weak self] in
+        self.addHandler { [weak self] in
             guard let boxPlayerXP = self else { return }
             boxPlayerXP.isHidden = !boxPlayerXP.isHidden
         }

@@ -50,7 +50,7 @@ class PlayerHUD: Control {
         self.addChild(levelBackground)
         levelBackground.addChild(self.labelLevel)
         
-        levelBackground.touchUpEvent = { [weak self] in
+        levelBackground.addHandler { [weak self] in
             guard let playerHUD = self else { return }
             playerHUD.boxPlayerXP.isHidden = !playerHUD.boxPlayerXP.isHidden
         }

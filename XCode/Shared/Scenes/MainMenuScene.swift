@@ -32,7 +32,7 @@ class MainMenuScene: GameScene {
         
         self.addChild(self.buttonPlay)
         
-        self.buttonPlay.touchUpEvent = { [weak self] in
+        self.buttonPlay.addHandler { [weak self] in
             guard let scene = self else { return }
             if scene.nextState == .mainMenu {
                 scene.nextState = .mission

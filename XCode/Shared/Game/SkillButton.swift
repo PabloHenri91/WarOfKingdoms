@@ -18,7 +18,7 @@ class SkillButton: Button {
         
         super.init(imageNamed: "boxWhite34x34", x: x, y: y, horizontalAlignment: horizontalAlignment, verticalAlignment: verticalAlignment)
         
-        self.touchUpEvent = { [weak self] in
+        self.addHandler { [weak self] in
             guard let skillButton = self else { return }
             
             skillButton.skill?.activate()
