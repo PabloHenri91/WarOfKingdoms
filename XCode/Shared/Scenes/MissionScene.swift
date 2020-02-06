@@ -10,7 +10,7 @@ import SpriteKit
 
 class MissionScene: GameScene {
     
-    enum zPosition: CGFloat {
+    enum zPositions: CGFloat {
         case gameWorld = 0
         case playerHUD = 100
     }
@@ -34,7 +34,7 @@ class MissionScene: GameScene {
         
         
         self.addChild(self.gameWorld)
-        self.gameWorld.zPosition = zPosition.gameWorld.rawValue
+        self.gameWorld.zPosition = zPositions.gameWorld.rawValue
         self.gameWorld.addChild(self.gameCamera)
         self.gameCamera.node = self.player
         self.gameCamera.update()
@@ -45,7 +45,7 @@ class MissionScene: GameScene {
         self.gameWorld.addChild(self.player)
         self.player.zPosition = GameWorld.zPosition.player.rawValue
         self.addChild(self.player.hud)
-        self.player.hud.zPosition = MissionScene.zPosition.playerHUD.rawValue
+        self.player.hud.zPosition = MissionScene.zPositions.playerHUD.rawValue
         
     }
     

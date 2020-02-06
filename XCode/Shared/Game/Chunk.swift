@@ -10,7 +10,7 @@ import SpriteKit
 
 class Chunk: SKNode, XMLParserDelegate {
     
-    enum layerName: String {
+    enum layerNames: String {
         case base
         case walls
         case decorationBottom
@@ -188,7 +188,7 @@ class Chunk: SKNode, XMLParserDelegate {
         
         let string = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if string.isEmpty == false {
-            self.loadLayer(data: string.components(separatedBy: ","), loadPhysics: self.layerName == layerName.walls.rawValue)
+            self.loadLayer(data: string.components(separatedBy: ","), loadPhysics: self.layerName == layerNames.walls.rawValue)
             self.layersZPosition = self.layersZPosition + 1
         }
     }
