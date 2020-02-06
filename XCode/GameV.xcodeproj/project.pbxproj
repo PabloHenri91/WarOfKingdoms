@@ -635,6 +635,7 @@
 					84AC31D61DC3864D00F0C6E1 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = JZ3J7RVLD7;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1166,7 +1167,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.PabloHenri91.GameV;
 				PRODUCT_NAME = GameV;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1182,7 +1184,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.PabloHenri91.GameV;
 				PRODUCT_NAME = GameV;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
