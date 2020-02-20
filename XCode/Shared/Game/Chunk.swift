@@ -128,7 +128,7 @@ class Chunk: SKNode, XMLParserDelegate {
             
             let height = Int(attributeDict["height"]!)!
             let name = attributeDict["name"] ?? ""
-            let id = Int(attributeDict["id"]!)!
+            let _ = Int(attributeDict["id"]!)!
             let width = Int(attributeDict["width"]!)!
             let x = Int(attributeDict["x"]!)!
             let type = attributeDict["type"]!
